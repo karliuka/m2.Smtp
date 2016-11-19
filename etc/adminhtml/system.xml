@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Faonni
+ *  
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade module to newer
+ * versions in the future.
+ * 
+ * @package     Faonni_Smtp
+ * @copyright   Copyright (c) 2016 Karliuka Vitalii(karliuka.vitalii@gmail.com) 
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="system">
+            <group id="smtp">
+                <field id="enabled" translate="label" type="select" sortOrder="11" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Enable SMTP For Email</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="disable">0</field>
+                    </depends>                       
+                </field>
+                <field id="host" translate="label comment">
+                    <comment>Either host name or IP address.</comment>
+                    <depends>
+                        <field id="disable">0</field>
+                        <field id="enabled">1</field>
+                    </depends>                    
+                </field>
+                <field id="port" translate="label comment">
+                    <comment>Usually is 25, 587 or 465. Please consult with your service provider.</comment>
+                    <depends>
+                        <field id="disable">0</field>
+                        <field id="enabled">1</field>
+                    </depends>                     
+                </field>
+                <field id="ssl" translate="label" type="select" sortOrder="31" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Connection Security</label>
+                    <source_model>Faonni\Smtp\Model\Config\Source\Ssl</source_model>
+                    <depends>
+                        <field id="disable">0</field>
+                        <field id="enabled">1</field>
+                    </depends>                      
+                </field>                   
+                <field id="auth" translate="label" type="select" sortOrder="32" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Authentication Method</label>
+                    <source_model>Faonni\Smtp\Model\Config\Source\Auth</source_model>
+                    <depends>
+                        <field id="disable">0</field>
+                        <field id="enabled">1</field>
+                    </depends>                      
+                </field>
+                <field id="user" translate="label" type="text" sortOrder="33" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>User</label>
+                    <depends>
+                        <field id="disable">0</field>
+                        <field id="enabled">1</field>
+                        <field id="auth">login</field>
+                    </depends>                      
+                </field>
+                <field id="pass" translate="label" type="password" sortOrder="34" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Password</label>
+                    <depends>
+                        <field id="disable">0</field>
+                        <field id="enabled">1</field>
+                        <field id="auth">login</field>
+                    </depends>                      
+                </field>
+                <field id="set_return_path">
+                    <depends>
+                        <field id="disable">0</field>
+                    </depends>  
+                </field>                
+            </group>
+        </section>
+    </system>
+</config>
