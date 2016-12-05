@@ -79,6 +79,15 @@
                         <field id="auth">login</field>
                     </depends>                      
                 </field>
+                <field id="validate" translate="button_label" sortOrder="35" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <button_label>Ajax Button</button_label>
+                    <frontend_model>Faonni\ConfigAjaxButton\Block\Adminhtml\System\Config\Button</frontend_model>
+                    <if_module_enabled>Faonni_ConfigAjaxButton</if_module_enabled>
+                    <depends>
+                        <field id="disable">0</field>
+                        <field id="enabled">1</field>
+                    </depends>                      
+                </field>              
                 <field id="set_return_path">
                     <depends>
                         <field id="disable">0</field>
