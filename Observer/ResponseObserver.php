@@ -37,5 +37,10 @@ class ResponseObserver implements ObserverInterface
      */
     public function execute(Observer $observer)
     {
+		$request = $observer->getEvent()->getRequest();
+		$response = $observer->getEvent()->getResponse();
+		
+		$response->setValid(true);
+		$response->setMessage('Connection Successful');
     }
 }  
