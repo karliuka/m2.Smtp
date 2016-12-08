@@ -23,12 +23,41 @@ namespace Faonni\Smtp\Observer;
 
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
+use Magento\Framework\ObjectManagerInterface;
 
 /**
  * Smtp response observer
  */
 class ResponseObserver implements ObserverInterface
 {
+    /**
+     * Object Manager instance
+     *
+     * @var \Magento\Framework\ObjectManagerInterface
+     */
+    protected $_objectManager;
+
+    /**
+     * Instance name to create
+     *
+     * @var string
+     */
+    protected $_instanceName;
+    
+    /**
+     * Factory constructor
+     *
+     * @param \Magento\Framework\ObjectManagerInterface $objectManager
+     * @param string $instanceName
+     */
+    public function __construct(
+        ObjectManagerInterface $objectManager,
+        $instanceName = 'Faonni\Smtp\Model\Transport'
+    ) {
+        $this->_objectManager = $objectManager;
+        $this->_instanceName = $instanceName;
+    }
+       	
     /**
      * Handler for smtp response event
      *
@@ -38,9 +67,29 @@ class ResponseObserver implements ObserverInterface
     public function execute(Observer $observer)
     {
 		$request = $observer->getEvent()->getRequest();
-		$response = $observer->getEvent()->getResponse();
-		
-		$response->setValid(true);
-		$response->setMessage('Connection Successful');
+		$response = $observer->getEvent()->getResponse();		
+		try {
+            $data = [
+				'host' => $request->getParam('host'),
+				'config' => [
+					'port' => $request->getParam('port'),
+					'auth' => $request->getParam('auth'),
+					'ssl'  => $request->getParam('ssl'),					
+					'username' => $request->getParam('user'),
+					'password' => $request->getParam('pass')			
+				]
+            ];
+            $transport = $this->_objectManager->create($this->_instanceName, $data);
+            if ($transport->testConnection()) {
+				$response->setValid(true);
+				$response->setMessage(__('Connection Successful'));
+			} else {
+				$response->setMessage(__('Connection Failed'));		
+			}
+        } 
+        catch (\Exception $e) {
+            $response->setMessage($e->getMessage());
+        } 
+        return $this;
     }
 }  

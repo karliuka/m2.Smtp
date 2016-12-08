@@ -45,8 +45,7 @@ class ParamsObserver implements ObserverInterface
 			'auth' => 'system_smtp_auth',
 			'user' => 'system_smtp_user',
 			'pass' => 'system_smtp_pass'			
-		];
-		
+		];		
 		$button->setParam($params);		
 		return $this;
     }

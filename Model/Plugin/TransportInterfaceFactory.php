@@ -53,6 +53,7 @@ class TransportInterfaceFactory
     /**
      * Factory constructor
      *
+     * @param \Faonni\Smtp\Helper\Data $helper 
      * @param \Magento\Framework\ObjectManagerInterface $objectManager
      * @param string $instanceName
      */

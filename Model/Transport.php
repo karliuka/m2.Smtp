@@ -66,4 +66,37 @@ class Transport extends \Zend_Mail_Transport_Smtp implements TransportInterface
             throw new MailException(new Phrase($e->getMessage()), $e);
         }
     }
+    
+    /**
+     * Test the SMTP connection protocol
+     *
+     * The connection via the protocol adapter is made just-in-time to allow a
+     * developer to add a custom adapter if required before mail is sent.
+     *
+     * @return bool
+     */
+    public function testConnection()
+    {
+        $result = false;
+        // If sending multiple messages per session use existing adapter
+        if (!($this->_connection instanceof Zend_Mail_Protocol_Smtp)) {
+            // Check if authentication is required and determine required class
+            $connectionClass = 'Zend_Mail_Protocol_Smtp';
+            if ($this->_auth) {
+                $connectionClass .= '_Auth_' . ucwords($this->_auth);
+            }
+            if (!class_exists($connectionClass)) {
+                #require_once 'Zend/Loader.php';
+                Zend_Loader::loadClass($connectionClass);
+            }
+            $this->setConnection(new $connectionClass($this->_host, $this->_port, $this->_config));
+            $this->_connection->connect();
+            $this->_connection->helo($this->_name);
+            $result = true;
+        } 
+		// Reset connection to ensure reliable transaction
+		$this->_connection->rset();
+		
+		return $result;
+    }    
 }
