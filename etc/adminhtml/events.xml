@@ -23,13 +23,16 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 	xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
-	
-    <event name="adminhtml_ajax_button_response">
+	<!--
+	event adminhtml_ajax_button_response
+	-->		
+    <event name="adminhtml_ajax_button_response_system_smtp_validate">
         <observer name="faonni_smtp" instance="Faonni\Smtp\Observer\ResponseObserver" />
     </event>
-    
-    <event name="adminhtml_ajax_button_params">
+	<!--
+	event adminhtml_ajax_button_params
+	-->	    
+    <event name="adminhtml_ajax_button_params_system_smtp_validate">
         <observer name="faonni_smtp" instance="Faonni\Smtp\Observer\ParamsObserver" />
-    </event>
-    
+    </event>   
 </config>

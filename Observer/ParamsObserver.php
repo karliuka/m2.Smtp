@@ -37,5 +37,17 @@ class ParamsObserver implements ObserverInterface
      */
     public function execute(Observer $observer)
     {
+		$button = $observer->getEvent()->getButton();
+		$params = [
+			'host' => 'system_smtp_host',
+			'port' => 'system_smtp_port',
+			'ssl'  => 'system_smtp_ssl',
+			'auth' => 'system_smtp_auth',
+			'user' => 'system_smtp_user',
+			'pass' => 'system_smtp_pass'			
+		];
+		
+		$button->setParam($params);		
+		return $this;
     }
 } 

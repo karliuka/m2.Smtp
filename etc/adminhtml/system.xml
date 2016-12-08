@@ -80,7 +80,7 @@
                     </depends>                      
                 </field>
                 <field id="validate" translate="button_label" sortOrder="35" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <button_label>Ajax Button</button_label>
+                    <button_label>Test connection</button_label>
                     <frontend_model>Faonni\ConfigAjaxButton\Block\Adminhtml\System\Config\Button</frontend_model>
                     <if_module_enabled>Faonni_ConfigAjaxButton</if_module_enabled>
                     <depends>
