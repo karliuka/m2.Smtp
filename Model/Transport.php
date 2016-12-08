@@ -62,7 +62,8 @@ class Transport extends \Zend_Mail_Transport_Smtp implements TransportInterface
     {
         try {
             parent::send($this->_message);
-        } catch (\Exception $e) {
+        } 
+        catch (\Exception $e) {
             throw new MailException(new Phrase($e->getMessage()), $e);
         }
     }
@@ -70,15 +71,11 @@ class Transport extends \Zend_Mail_Transport_Smtp implements TransportInterface
     /**
      * Test the SMTP connection protocol
      *
-     * The connection via the protocol adapter is made just-in-time to allow a
-     * developer to add a custom adapter if required before mail is sent.
-     *
      * @return bool
      */
     public function testConnection()
     {
         $result = false;
-        // If sending multiple messages per session use existing adapter
         if (!($this->_connection instanceof Zend_Mail_Protocol_Smtp)) {
             // Check if authentication is required and determine required class
             $connectionClass = 'Zend_Mail_Protocol_Smtp';
@@ -94,7 +91,7 @@ class Transport extends \Zend_Mail_Transport_Smtp implements TransportInterface
             $this->_connection->helo($this->_name);
             $result = true;
         } 
-		// Reset connection to ensure reliable transaction
+		// Reset connection transaction
 		$this->_connection->rset();
 		
 		return $result;
