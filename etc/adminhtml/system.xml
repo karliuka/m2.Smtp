@@ -34,14 +34,14 @@
                     </depends>                       
                 </field>
                 <field id="host" translate="label comment">
-                    <comment>Either host name or IP address.</comment>
+                    <comment><model>Faonni\Smtp\Model\Config\Comment\Host</model></comment>
                     <depends>
                         <field id="disable">0</field>
                         <field id="enabled">1</field>
                     </depends>                    
                 </field>
                 <field id="port" translate="label comment">
-                    <comment>Usually is 25, 587 or 465. Please consult with your service provider.</comment>
+                    <comment><model>Faonni\Smtp\Model\Config\Comment\Port</model></comment>
                     <depends>
                         <field id="disable">0</field>
                         <field id="enabled">1</field>
