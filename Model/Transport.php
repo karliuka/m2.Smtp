@@ -65,7 +65,10 @@ class Transport extends \Zend_Mail_Transport_Smtp implements TransportInterface
         } 
         catch (\Exception $e) {
             throw new MailException(new Phrase($e->getMessage()), $e);
-        }
+        } 
+        finally {
+			
+		}
     }
     
     /**
