@@ -33,14 +33,14 @@
                         <field id="disable">0</field>
                     </depends>                       
                 </field>
-                <field id="host" translate="label comment">
+                <field id="host">
                     <comment><model>Faonni\Smtp\Model\Config\Comment\Host</model></comment>
                     <depends>
                         <field id="disable">0</field>
                         <field id="enabled">1</field>
                     </depends>                    
                 </field>
-                <field id="port" translate="label comment">
+                <field id="port">
                     <comment><model>Faonni\Smtp\Model\Config\Comment\Port</model></comment>
                     <depends>
                         <field id="disable">0</field>
