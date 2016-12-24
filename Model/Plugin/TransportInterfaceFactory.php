@@ -44,7 +44,7 @@ class TransportInterfaceFactory
     protected $_instanceName;
     
     /**
-     * Store Config
+     * Helper instance
      *
      * @var Faonni\Smtp\Helper\Data
      */
