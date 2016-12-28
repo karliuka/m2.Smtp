@@ -30,7 +30,7 @@ use Magento\Framework\App\Helper\AbstractHelper;
 class Data extends AbstractHelper
 {
     /**
-     * host config path
+     * Enabled config path
      */
     const XML_SMTP_ENABLED = 'system/smtp/enabled';
     	
