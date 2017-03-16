@@ -2,13 +2,12 @@
     "name": "faonni/module-smtp",
     "description": "Extension enables you to easily use your own custom SMTP server for sending mail. ",
     "type": "magento2-module",
-	"version": "2.0.8",
+	"version": "2.1.0",
 	"license": [
 		"OSL-3.0"
 		],
 	"require": {
-		"php": "~5.5.0|~5.6.0|~7.0.0",
-		"faonni/module-config-ajax-button": "^2.0"
+		"php": "~5.5.0|~5.6.0|~7.0.0"
 		},
 	"autoload": {
 	"files": [ "registration.php" ],

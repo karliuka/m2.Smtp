@@ -16,7 +16,7 @@
  * versions in the future.
  * 
  * @package     Faonni_Smtp
- * @copyright   Copyright (c) 2016 Karliuka Vitalii(karliuka.vitalii@gmail.com) 
+ * @copyright   Copyright (c) 2017 Karliuka Vitalii(karliuka.vitalii@gmail.com) 
  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 namespace Faonni\Smtp\Model\Plugin; 
@@ -78,7 +78,8 @@ class TransportInterfaceFactory
     public function aroundCreate($subject, $proceed, array $data = []) 
     {
         if ($this->_helper->isEnabled()) {
-            return $this->_objectManager->create($this->_instanceName, $this->_helper->getConfig($data));
+            return $this->_objectManager
+				->create($this->_instanceName, $this->_helper->getConfig($data));
         }
 		return $proceed($data);
     }	

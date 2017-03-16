@@ -16,7 +16,7 @@
  * versions in the future.
  * 
  * @package     Faonni_Smtp
- * @copyright   Copyright (c) 2016 Karliuka Vitalii(karliuka.vitalii@gmail.com) 
+ * @copyright   Copyright (c) 2017 Karliuka Vitalii(karliuka.vitalii@gmail.com) 
  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 namespace Faonni\Smtp\Helper;
@@ -35,32 +35,32 @@ class Data extends AbstractHelper
     const XML_SMTP_ENABLED = 'system/smtp/enabled';
     	
     /**
-     * host config path
+     * Host config path
      */
     const XML_SMTP_HOST = 'system/smtp/host';
 
     /**
-     * port config path
+     * Port config path
      */
     const XML_SMTP_PORT = 'system/smtp/port';
 
     /**
-     * auth config path
+     * Auth config path
      */
     const XML_SMTP_AUTH = 'system/smtp/auth';
  
     /**
-     * ssl config path
+     * Ssl config path
      */
     const XML_SMTP_SSL = 'system/smtp/ssl';
 
     /**
-     * username config path
+     * Username config path
      */
     const XML_SMTP_USER = 'system/smtp/user';
 
     /**
-     * password config path
+     * Password config path
      */
     const XML_SMTP_PASS = 'system/smtp/pass';
  	

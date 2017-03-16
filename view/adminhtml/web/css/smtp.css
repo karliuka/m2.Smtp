@@ -1,0 +1,10 @@
+.actions-smtp-test .message-test {
+	display:inline-block;
+	margin-left:10px;
+} 
+.actions-smtp-test .error {
+	color:red;
+} 
+.actions-smtp-test .success {
+	color:green;
+} 
