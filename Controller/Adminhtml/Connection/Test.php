@@ -22,7 +22,6 @@
 namespace Faonni\Smtp\Controller\Adminhtml\Connection;
 
 use Magento\Framework\Controller\Result\JsonFactory;
-use Magento\Framework\ObjectManagerInterface;
 use Magento\Backend\App\Action\Context;
 use Faonni\Smtp\Controller\Adminhtml\Connection as ConnectionAbstract;
 
@@ -35,13 +34,6 @@ class Test extends ConnectionAbstract
      * Authorization level of a basic admin session
      */
     const ADMIN_RESOURCE = 'Magento_Config::config_system';
-    
-    /**
-     * Object Manager instance
-     *
-     * @var \Magento\Framework\ObjectManagerInterface
-     */
-    protected $_objectManager;
         	
     /**
      * Result json factory instance 
@@ -61,17 +53,14 @@ class Test extends ConnectionAbstract
      * Initialize Controller
      * 
      * @param Context $context
-     * @param ObjectManagerInterface $objectManager
      * @param JsonFactory $resultFactory
      * @param string $transportInstance
      */
     public function __construct(
-        Context $context,
-        ObjectManagerInterface $objectManager,        
+        Context $context,        
         JsonFactory $resultFactory,
         $transportInstance = 'Faonni\Smtp\Model\Transport'        
-    ) {
-        $this->_objectManager = $objectManager;        
+    ) {      
         $this->_resultFactory = $resultFactory;
         $this->_transportInstance = $transportInstance; 
               
