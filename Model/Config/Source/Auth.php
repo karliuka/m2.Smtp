@@ -9,12 +9,12 @@ namespace Faonni\Smtp\Model\Config\Source;
 use Magento\Framework\Option\ArrayInterface;
 
 /**
- * Source of option values in a form of value-label pairs
+ * Auth Source Option
  */
 class Auth implements ArrayInterface
 {
     /**
-     * Return array of options as value-label pairs
+     * Retrieve array of Options as Value-Label Pairs
      *
      * @return array
      */

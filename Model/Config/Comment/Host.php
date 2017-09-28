@@ -9,18 +9,18 @@ namespace Faonni\Smtp\Model\Config\Comment;
 use Magento\Config\Model\Config\CommentInterface;
 
 /**
- * System configuration comment model
+ * Host Field Comment
  */
 class Host implements CommentInterface
 {
     /**
-     * Retrieve element comment by element value
+     * Retrieve Element Comment by Element Value
      * 
      * @param string $elementValue
      * @return string
      */	
 	public function getCommentText($elementValue)
     {
-        return __('Either host name or IP address.');
+        return __('Either Hostname or IP address.');
     }
 }

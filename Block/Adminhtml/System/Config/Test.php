@@ -11,7 +11,7 @@ use Magento\Framework\Data\Form\Element\AbstractElement;
 use Magento\Config\Block\System\Config\Form\Field;
 
 /**
- * Faonni config ajax test button block
+ * Ajax Test Button Block
  */
 class Test extends Field
 {
@@ -37,13 +37,12 @@ class Test extends Field
      */
     public function setButtonLabel($buttonLabel)
     {
-        $this->_buttonLabel = $buttonLabel;
-        
+        $this->_buttonLabel = $buttonLabel;        
         return $this;
     }
 
     /**
-     * Add param to button
+     * Add Param to Button
      *
      * @param string $name	 
      * @param string $element
@@ -51,13 +50,12 @@ class Test extends Field
      */
     public function addParam($name, $element)
     {
-		$this->_buttonParams->addData($name, $element);	
-			
+		$this->_buttonParams->addData($name, $element);				
         return $this;
     }
 	
     /**
-     * Overwrite params to button
+     * Overwrite Params to Button
      *
      * @param string|array $name	 
      * @param string $element
@@ -65,13 +63,12 @@ class Test extends Field
      */
     public function setParam($name, $element=null)
     {
-		$this->_buttonParams->setData($name, $element);	
-			
+		$this->_buttonParams->setData($name, $element);			
         return $this;
     }
 	
     /**
-     * Set template to itself
+     * Set Template to itself
      *
      * @return \Magento\Config\Block\System\Config\Form\Field
      */
@@ -81,15 +78,13 @@ class Test extends Field
         
         if (!$this->getTemplate()) {
             $this->setTemplate('system/config/test.phtml');
-        } 
-              
-        $this->_buttonParams = new DataObject();
-               
+        }              
+        $this->_buttonParams = new DataObject();              
         return $this;
     }
 
     /**
-     * Unset some non-related element parameters
+     * Unset some non-related Element Parameters
      *
      * @param AbstractElement $element
      * @return string
@@ -104,7 +99,7 @@ class Test extends Field
     }
 
     /**
-     * Get the button and scripts contents
+     * Retrieve Button and Scripts Contents
      *
      * @param AbstractElement $element
      * @return string
@@ -124,13 +119,12 @@ class Test extends Field
                 'js_function'    => 'smtpConnectionTest',
                 'html_result_id' => 'smtp_connection_test',
             ]
-        );
-        
+        );       
         return $this->_toHtml();
     }
     
     /**
-     * Get the button params
+     * Retrieve Button Params
      *
      * @return \Magento\Framework\DataObject
      */

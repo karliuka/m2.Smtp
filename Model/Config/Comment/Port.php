@@ -9,12 +9,12 @@ namespace Faonni\Smtp\Model\Config\Comment;
 use Magento\Config\Model\Config\CommentInterface;
 
 /**
- * System configuration comment model
+ * Port Field Comment
  */
 class Port implements CommentInterface
 {
     /**
-     * Retrieve element comment by element value
+     * Retrieve Element Comment by Element Value
      * 
      * @param string $elementValue
      * @return string

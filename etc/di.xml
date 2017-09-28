@@ -12,6 +12,6 @@
 	plugin for a class Magento\Framework\Mail\TransportInterfaceFactory
 	-->		
     <type name="\Magento\Framework\Mail\TransportInterfaceFactory">
-        <plugin name="Faonni_Smtp" type="Faonni\Smtp\Model\Plugin\TransportInterfaceFactory" />
+        <plugin name="faonni_smtp" type="Faonni\Smtp\Model\Plugin\TransportInterfaceFactory" />
     </type>
 </config>

@@ -11,7 +11,7 @@ use Magento\Backend\App\Action\Context;
 use Faonni\Smtp\Controller\Adminhtml\Connection as ConnectionAbstract;
 
 /**
- * Smtp test connection controller
+ * Test Connection Controller
  */
 class Test extends ConnectionAbstract
 {
@@ -55,10 +55,9 @@ class Test extends ConnectionAbstract
     }
    
     /**
-     * Dispatch request
+     * Test Connection
      *
      * @return \Magento\Framework\Controller\ResultInterface|ResponseInterface
-     * @throws \Magento\Framework\Exception\NotFoundException
      */     
     public function execute()
     {

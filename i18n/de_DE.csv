@@ -1,7 +1,7 @@
 "Connection Successful","Verbindung erfolgreich"
 "Connection Failed","Verbindung fehlgeschlagen"
 "Enable SMTP For Email","Aktivieren Sie SMTP für E-mail"
-"Either host name or IP address.","Entweder Hostnamen oder die IP Adresse."
+"Either Hostname or IP address.","Entweder Hostnamen oder die IP Adresse."
 "Usually is 25, 587 or 465. Please consult with your service provider.","Normalerweise ist 25, 587 oder 465. Bitte wenden Sie sich an Ihren Dienstanbieter."
 "Connection Security","SSL Sicherheit"
 "Authentication Method","Authentifizierung"

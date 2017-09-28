@@ -10,36 +10,36 @@ use Magento\Framework\ObjectManagerInterface;
 use Faonni\Smtp\Helper\Data as SmtpHelper;
 
 /**
- * Plugin for \Magento\Framework\Mail\TransportInterface
+ * TransportInterface Plugin
  */
 class TransportInterfaceFactory
 {
     /**
-     * Object Manager instance
+     * Object Manager
      *
      * @var \Magento\Framework\ObjectManagerInterface
      */
     protected $_objectManager;
 
     /**
-     * Instance name to create
+     * Transport Instance Name to Create
      *
      * @var string
      */
     protected $_instanceName;
     
     /**
-     * Helper instance
+     * Helper
      *
-     * @var Faonni\Smtp\Helper\Data
+     * @var \Faonni\Smtp\Helper\Data
      */
     protected $_helper;
     
     /**
-     * Factory constructor
-     *
-     * @param \Faonni\Smtp\Helper\Data $helper 
-     * @param \Magento\Framework\ObjectManagerInterface $objectManager
+	 * Initialize Factory
+	 *	
+     * @param SmtpHelper $helper 
+     * @param ObjectManagerInterface $objectManager
      * @param string $instanceName
      */
     public function __construct(
@@ -53,9 +53,9 @@ class TransportInterfaceFactory
     }
     	
     /**
-     * Create class instance with specified parameters
+     * Create Class instance with Specified Parameters
      *
-     * @param $subject Magento\Framework\Mail\TransportInterfaceFactory
+     * @param $subject TransportInterfaceFactory
      * @param $proceed \Callable	
      * @param array $data
      * @return \Magento\Framework\Mail\TransportInterface

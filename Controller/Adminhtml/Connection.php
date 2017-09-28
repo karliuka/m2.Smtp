@@ -9,7 +9,7 @@ namespace Faonni\Smtp\Controller\Adminhtml;
 use Magento\Backend\App\Action;
 
 /**
- * Smtp abstract connection controller
+ * Abstract Connection Controller
  */
 abstract class Connection extends Action
 {

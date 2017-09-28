@@ -13,12 +13,12 @@ use Magento\Framework\Exception\MailException;
 use Magento\Framework\Phrase;
 
 /**
- * Faonni Smtp Transport
+ * Smtp Transport
  */
 class Transport extends \Zend_Mail_Transport_Smtp implements TransportInterface
 {
     /**
-     * Object Manager instance
+     * Object Manager
      *
      * @var \Magento\Framework\Mail\MessageInterface
      */     
@@ -32,6 +32,8 @@ class Transport extends \Zend_Mail_Transport_Smtp implements TransportInterface
     protected $_eventManager;	
     
     /**
+	 * Initialize Transport
+	 *	
      * @param MessageInterface $message
      * @param ManagerInterface $eventManager	 
      * @param array $config
@@ -47,8 +49,8 @@ class Transport extends \Zend_Mail_Transport_Smtp implements TransportInterface
             throw new \InvalidArgumentException(
 				'The message should be an instance of \Zend_Mail'
 			);
-        }
-        
+        } 
+		
         $this->_message = $message;
 		$this->_eventManager = $eventManager;
 		
@@ -59,7 +61,7 @@ class Transport extends \Zend_Mail_Transport_Smtp implements TransportInterface
     }
 
     /**
-     * Send a mail using this transport
+     * Send a Mail Using this Transport
      *
      * @return void
      * @throws \Magento\Framework\Exception\MailException
@@ -85,7 +87,7 @@ class Transport extends \Zend_Mail_Transport_Smtp implements TransportInterface
     }
     
     /**
-     * Test the SMTP connection protocol
+     * Test the Smtp Connection Protocol
      *
      * @return bool
      */
@@ -120,7 +122,7 @@ class Transport extends \Zend_Mail_Transport_Smtp implements TransportInterface
     } 
 	
     /**
-     * Get message
+     * Retrieve Message
      *
      * @return \Magento\Framework\Mail\MessageInterface
      */
