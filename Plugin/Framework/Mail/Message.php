@@ -8,6 +8,7 @@ namespace Faonni\Smtp\Plugin\Framework\Mail;
 
 use Magento\Framework\Mail\MessageInterface;
 use Faonni\Smtp\Helper\Data as SmtpHelper;
+use Faonni\Smtp\Model\Attachment\Image as ImageAttachment;
 
 /**
  * Message Plugin
@@ -20,6 +21,13 @@ class Message
      * @var \Faonni\Smtp\Helper\Data
      */
     protected $_helper;
+    
+    /**
+     * Image Attachment
+     *
+     * @var \Faonni\Smtp\Model\Attachment\Image
+     */
+    protected $_imageAttachment;    
 	
     /**
      * Message Type
@@ -31,12 +39,15 @@ class Message
     /**
 	 * Initialize Mail
 	 *	
-     * @param SmtpHelper $helper 
+     * @param SmtpHelper $helper
+     * @param ImageAttachment $imageAttachment    
      */
     public function __construct(
-        SmtpHelper $helper
+        SmtpHelper $helper,
+        ImageAttachment $imageAttachment
     ) {
         $this->_helper = $helper;
+        $this->_imageAttachment = $imageAttachment;
     }
 	
     /**
@@ -48,7 +59,7 @@ class Message
      */	
     public function beforeSetBody(MessageInterface $subject, $body) 
     {
-		if ($this->_helper->isEnabled() && $this->isTypeHtml()) {
+		if ($this->_helper->isImageAttachment() && $this->isTypeHtml()) {
 			$body = $this->_prepareBodyHtml($subject, $body);
 		}
 		return [$body];
@@ -86,6 +97,6 @@ class Message
      */
     protected function _prepareBodyHtml(MessageInterface $message, $body)
     {
-        return $body;
+        return $this->_imageAttachment->prepareBodyHtml($message, $body);
     }	
 }
