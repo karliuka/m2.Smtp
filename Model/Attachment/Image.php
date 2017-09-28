@@ -157,7 +157,7 @@ class Image
     protected function _getStoreUrls()
     {
         if (null === $this->_storeUrls) {
-        $this->_storeUrls = [];
+            $this->_storeUrls = [];
             foreach ($this->_storeRepository->getList() as $store) {
                 foreach ([true, false] as $secure) {
                     $url = $store->getBaseUrl(UrlInterface::URL_TYPE_LINK, $secure);
