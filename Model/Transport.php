@@ -117,5 +117,15 @@ class Transport extends \Zend_Mail_Transport_Smtp implements TransportInterface
 		$this->_connection->rset();
 		
 		return $result;
-    }    
+    } 
+	
+    /**
+     * Get message
+     *
+     * @return \Magento\Framework\Mail\MessageInterface
+     */
+    public function getMessage()
+	{
+		return $this->_message;
+	}
 }
