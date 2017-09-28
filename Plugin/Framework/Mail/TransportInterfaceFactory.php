@@ -4,7 +4,7 @@
  * 
  * See COPYING.txt for license details.
  */
-namespace Faonni\Smtp\Model\Plugin; 
+namespace Faonni\Smtp\Plugin\Framework\Mail; 
 
 use Magento\Framework\ObjectManagerInterface;
 use Faonni\Smtp\Helper\Data as SmtpHelper;
