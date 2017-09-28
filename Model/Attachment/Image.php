@@ -138,7 +138,7 @@ class Image
     }
     
     /**
-     * Retrieve Mime-Type for image-type
+     * Retrieve Mime-Type for Image-Type
 	 *
      * @param  string $filename
      * @return string
