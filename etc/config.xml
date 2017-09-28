@@ -15,6 +15,8 @@
                 <enabled>1</enabled>
                 <ssl>ssl</ssl>
                 <auth>login</auth>
+                <pass backend_model="Magento\Config\Model\Config\Backend\Encrypted" />
+                <image_attachment>1</image_attachment>
             </smtp>
         </system>
     </default>
