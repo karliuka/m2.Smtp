@@ -11,6 +11,7 @@
     <module name="Faonni_Smtp" setup_version="2.1.1">
         <sequence>
             <module name="Magento_Backend"/>
+			<module name="Magento_Email"/>
         </sequence>
     </module>	
 </config>
