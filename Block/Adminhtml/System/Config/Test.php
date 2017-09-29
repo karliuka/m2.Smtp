@@ -111,15 +111,13 @@ class Test extends Field
 			? $data['button_label'] 
 			: $this->_buttonLabel;
 			
-        $this->addData(
-            [
-                'button_label'   => __($label),
-                'html_id'  	     => $element->getHtmlId(),
-                'ajax_url'       => $this->_urlBuilder->getUrl('smtp/connection/test'),
-                'js_function'    => 'smtpConnectionTest',
-                'html_result_id' => 'smtp_connection_test',
-            ]
-        );       
+        $this->addData([
+			'button_label'   => __($label),
+			'html_id'  	     => $element->getHtmlId(),
+			'ajax_url'       => $this->_urlBuilder->getUrl('smtp/connection/test'),
+			'js_function'    => 'smtpConnectionTest',
+			'html_result_id' => 'smtp_connection_test',
+		] );       
         return $this->_toHtml();
     }
     
@@ -133,4 +131,3 @@ class Test extends Field
         return $this->_buttonParams;
     }    
 }
- 

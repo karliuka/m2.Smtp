@@ -43,7 +43,6 @@ class Test extends ConnectionAbstract
      */
     protected $_smtpHelper; 
     
-    
     /**
      * Encryptor
      *
@@ -84,7 +83,7 @@ class Test extends ConnectionAbstract
      */     
     public function execute()
     {
-		$result = ['valid' => 0, 'message' => __('Connection Failed')];
+		$result = ['valid' => 0, 'message' => ''];
         		
 		try {
 			$request = $this->getRequest();
@@ -119,7 +118,6 @@ class Test extends ConnectionAbstract
 				
             if ($transport->testConnection()) {
 				$result['valid'] = 1;
-				$result['message'] = __('Connection Successful');
 			} 
         } 
         catch (\Exception $e) {

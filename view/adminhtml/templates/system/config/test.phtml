@@ -9,7 +9,9 @@
 require(['prototype'], function(){
 //<![CDATA[
     function <?php echo $block->getJsFunction() ?>() {
-        var validationMessage = $('<?php echo $block->getHtmlResultId() ?>');
+        var summaryId = $('<?php echo $block->getHtmlResultId() ?>');
+		var tooltipId = $('<?php echo $block->getHtmlResultId() ?>-tooltip');
+		var messageId = $('<?php echo $block->getHtmlResultId() ?>-message');
         var params = {
 			'host': $('system_smtp_host').value,
 			'port': $('system_smtp_port').value,
@@ -21,30 +23,33 @@ require(['prototype'], function(){
         new Ajax.Request('<?php /* @escapeNotVerified */ echo $block->getAjaxUrl() ?>', {
             parameters: params,
             onSuccess: function(response) {
-                var result = '<?php /* @escapeNotVerified */ echo __('Error during smtp connection test.') ?>';
+                var message = null;
                 try {
                     if (response.responseText.isJSON()) {
                         response = response.responseText.evalJSON();
-                        result = response.message || result;
+                        message = response.message || message;
                     }
                     if (response.valid == 1) {
-                        validationMessage
-							.removeClassName('error')
+                        tooltipId.addClassName('hidden');	
+						summaryId.removeClassName('error')
 							.removeClassName('hidden')
-							.addClassName('success');
+							.addClassName('success')
+							.update('<?php /* @escapeNotVerified */ echo __('Connection Successful') ?>');
                     } else {
-                        validationMessage
-							.removeClassName('success')
+                        tooltipId.removeClassName('hidden');
+						messageId.update(message);
+						summaryId.removeClassName('success')
 							.removeClassName('hidden')
-							.addClassName('error');
+							.addClassName('error')
+							.update('<?php /* @escapeNotVerified */ echo __('Connection Failed') ?>');
                     }
                 } catch (e) {
-                    validationMessage
-						.removeClassName('success')
+                    tooltipId.addClassName('hidden');
+					summaryId.removeClassName('success')
 						.removeClassName('hidden')
 						.addClassName('error')
+						.update('<?php /* @escapeNotVerified */ echo __('Error during smtp connection test.') ?>');
                 }
-                validationMessage.update(result);
             }
         });
     }
@@ -56,5 +61,9 @@ require(['prototype'], function(){
     <button onclick="javascript:<?php echo $block->getJsFunction() ?>(); return false;" type="button" id="<?php echo $block->getHtmlId() ?>">
         <span><?php echo $block->escapeHtml($block->getButtonLabel()) ?></span>
     </button>
-    <div id="<?php echo $block->getHtmlResultId() ?>" class="message-test hidden"></div>
+    <div id="<?php echo $block->getHtmlResultId() ?>" class="summary hidden"></div>
+	<div id="<?php echo $block->getHtmlResultId() ?>-tooltip" class="admin__field-tooltip hidden">
+		<span class="admin__field-tooltip-action action-help" tabindex="1"></span>
+		<div id="<?php echo $block->getHtmlResultId() ?>-message" class="admin__field-tooltip-content"></div>
+	</div>	
 </div>
