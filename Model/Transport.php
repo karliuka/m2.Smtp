@@ -8,9 +8,9 @@ namespace Faonni\Smtp\Model;
 
 use Magento\Framework\Mail\TransportInterface;
 use Magento\Framework\Mail\MessageInterface;
-use Magento\Framework\Event\ManagerInterface;
 use Magento\Framework\Exception\MailException;
 use Magento\Framework\Phrase;
+use Faonni\Smtp\Model\LogManagement;
 
 /**
  * Smtp Transport
@@ -25,23 +25,23 @@ class Transport extends \Zend_Mail_Transport_Smtp implements TransportInterface
     protected $_message;
 	
     /**
-     * Application Event Dispatcher
+     * Log Management
      *
-     * @var \Magento\Framework\Event\ManagerInterface
+     * @var \Faonni\Smtp\Model\LogManagement
      */
-    protected $_eventManager;	
+    protected $_logManager;	
     
     /**
 	 * Initialize Transport
 	 *	
      * @param MessageInterface $message
-     * @param ManagerInterface $eventManager	 
+     * @param LogManagement $logManager	 
      * @param array $config
      * @throws \InvalidArgumentException
      */
     public function __construct(
 		MessageInterface $message,
-		ManagerInterface $eventManager,
+		LogManagement $logManager,
 		$host = '127.0.0.1', 
 		array $config = []
 	) {
@@ -52,7 +52,7 @@ class Transport extends \Zend_Mail_Transport_Smtp implements TransportInterface
         } 
 		
         $this->_message = $message;
-		$this->_eventManager = $eventManager;
+		$this->_logManager = $logManager;
 		
 		parent::__construct(
 			$host, 
@@ -77,12 +77,7 @@ class Transport extends \Zend_Mail_Transport_Smtp implements TransportInterface
 			throw new MailException($error, $e);
         } 
         finally {
-			$this->_eventManager->dispatch(
-				'faonni_smtp_send_after', [
-					'message' => $this->_message,
-					'error'   => $error
-				]
-			); 			
+			$this->_logManager->add($this->_message, $error);			
 		}
     }
     
