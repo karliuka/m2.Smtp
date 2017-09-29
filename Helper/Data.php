@@ -47,12 +47,7 @@ class Data extends AbstractHelper
     /**
      * Password Config Path
      */
-    const XML_CONFIG_PASS = 'system/smtp/pass';
-    
-    /**
-     * Image Attachment Config Path
-     */
-    const XML_CONFIG_IMAGE_ATTACHMENT = 'system/smtp/image_attachment';    
+    const XML_CONFIG_PASS = 'system/smtp/pass';   
  	
     /**
      * Check Smtp Transport Functionality Should be Enabled
@@ -64,17 +59,6 @@ class Data extends AbstractHelper
     {
         return $this->_getConfig(self::XML_CONFIG_ENABLED, $store);
     } 
-    
-    /**
-     * Check Image Attachment Functionality Should be Enabled
-     *
-     * @param string $store      
-     * @return bool
-     */    	
-    public function isImageAttachment($store = null)
-    {
-        return $this->_getConfig(self::XML_CONFIG_IMAGE_ATTACHMENT, $store);
-    }
     
     /**
      * Retrieve Password

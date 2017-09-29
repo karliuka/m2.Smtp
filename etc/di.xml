@@ -14,10 +14,4 @@
     <type name="\Magento\Framework\Mail\TransportInterfaceFactory">
         <plugin name="faonni_smtp" type="Faonni\Smtp\Plugin\Framework\Mail\TransportInterfaceFactory" />
     </type>
-	<!--
-	plugin for a class Magento\Framework\Mail\Message
-	-->		
-    <type name="\Magento\Framework\Mail\Message">
-        <plugin name="faonni_smtp" type="Faonni\Smtp\Plugin\Framework\Mail\Message" />
-    </type>	
 </config>
