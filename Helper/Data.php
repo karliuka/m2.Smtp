@@ -77,6 +77,17 @@ class Data extends AbstractHelper
     }
     
     /**
+     * Retrieve Password
+     *
+     * @param string $store 
+     * @return string
+     */
+    public function getPassword($store = null)
+    {
+        return $this->_getConfig(self::XML_CONFIG_PASS, $store);
+    } 
+    
+    /**
      * Retrieve Configure Smtp Settings
      *
      * @param array $config
