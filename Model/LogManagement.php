@@ -60,13 +60,12 @@ class LogManagement
 		$log->setData([
 			'subject'         => $message->getSubject(),
 			'message_body'    => $message->getBody()->getRawContent(),
+			'from'            => $message->getFrom(),
 			'recipient_email' => $recipient,
 			'error'           => $error,
 			'status'          => $error ? 0 : 1
 		]);
 
 		$log->save();
-
-		
 	}
 }

@@ -114,7 +114,7 @@ class Test extends Field
         $this->addData([
 			'button_label'   => __($label),
 			'html_id'  	     => $element->getHtmlId(),
-			'ajax_url'       => $this->_urlBuilder->getUrl('smtp/connection/test'),
+			'ajax_url'       => $this->_urlBuilder->getUrl('faonni_smtp/connection/test'),
 			'js_function'    => 'smtpConnectionTest',
 			'html_result_id' => 'smtp_connection_test',
 		] );       

@@ -10,7 +10,7 @@
 	xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceContainer name="content">
-            <uiComponent name="faonni_smtp_log_form"/>
+            <block class="Faonni\Smtp\Block\Adminhtml\Log\View" name="faonni.smtp.log.view" template="log/view.phtml" />
         </referenceContainer>
-    </body>
+    </body>    
 </page>

@@ -66,7 +66,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
                     255,
                     ['nullable' => false],
                     'Recipient Email'
-                )			
+                )	                
 				->addColumn(
                     'subject',
                     Table::TYPE_TEXT,
@@ -81,6 +81,13 @@ class UpgradeSchema implements UpgradeSchemaInterface
                     ['nullable' => false],
                     'Message Body'
                 )
+				->addColumn(
+                    'from',
+                    Table::TYPE_TEXT,
+                    255,
+                    ['nullable' => false],
+                    'From'
+                )                 
 				->addColumn(
                     'error',
                     Table::TYPE_TEXT,
@@ -101,7 +108,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
 					null,
 					['nullable' => false, 'default' => Table::TIMESTAMP_INIT],
 					'Creation Time'
-				)
+				)			
 				->addColumn(
 					'updated_at',
 					Table::TYPE_TIMESTAMP,
