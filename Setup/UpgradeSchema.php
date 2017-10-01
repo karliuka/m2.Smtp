@@ -9,6 +9,7 @@ namespace Faonni\Smtp\Setup;
 use Magento\Framework\Setup\UpgradeSchemaInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\SchemaSetupInterface;
+use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\DB\Ddl\Table;
 
 /**
@@ -127,7 +128,16 @@ class UpgradeSchema implements UpgradeSchemaInterface
 				->addIndex(
 					$installer->getIdxName($tableName, ['updated_at']),
 					['updated_at']
-				)									
+				)	
+				->addIndex(
+					$installer->getIdxName(
+						$tableName,
+						['subject', 'message_body'],
+						AdapterInterface::INDEX_TYPE_FULLTEXT
+					),
+					['subject', 'message_body'],
+					['type' => AdapterInterface::INDEX_TYPE_FULLTEXT]
+				)				
 				->setComment(
                     'Faonni Smtp Log Table'
                 );				

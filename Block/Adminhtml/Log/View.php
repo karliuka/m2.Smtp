@@ -66,6 +66,16 @@ class View extends Container
             'onclick' => "location.href='" . $this->getUrl('*/*/') . "'",
             'class'   => 'back'
         ]);
+        
+        $this->addButton('delete', [
+            'label' => __('Delete'),
+            'onclick' => 'deleteConfirm(' . json_encode(__('Are you sure you want to do this?'))
+                . ','
+                . json_encode($this->getUrl('*/*/delete', ['id' => $this->getLog()->getId()]))
+                . ')',
+            'class' => 'scalable delete'
+        ]); 
+        
         return parent::_prepareLayout();
     }
     

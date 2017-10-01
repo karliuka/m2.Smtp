@@ -89,15 +89,15 @@ class View extends LogAbstract
                 __('Sending Emails'), 
                 __('Sending Emails')
             )->addBreadcrumb(
-                __('Message'), 
-                __('Message')
+                __($log->getSubject()), 
+                __($log->getSubject())
             );
 		
         $resultPage->getConfig()->getTitle()
 			->prepend(__('Sending Emails'));
 			
 		$resultPage->getConfig()->getTitle()
-            ->prepend(__('Message'));
+            ->prepend(__($log->getSubject()));
 			
         return $resultPage;
     }

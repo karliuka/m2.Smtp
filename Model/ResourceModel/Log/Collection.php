@@ -26,6 +26,13 @@ class Collection extends AbstractCollection
      * @var string
      */
     protected $_eventObject = 'collection';
+    
+    /**
+     * Identifier field name for collection items
+     *
+     * @var string
+     */
+    protected $_idFieldName = 'log_id';      
 	
     /**
      * Initialize Collection

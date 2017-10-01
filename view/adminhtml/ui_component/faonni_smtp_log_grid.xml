@@ -39,7 +39,7 @@
         <bookmark name="bookmarks"/>
         <columnsControls name="columns_controls"/>       
         <filterSearch name="fulltext"/>
-        <!--<filters name="listing_filters">
+        <filters name="listing_filters">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="templates" xsi:type="array">
@@ -55,7 +55,7 @@
                     <item name="column" xsi:type="string">column</item>
                 </item>
             </argument>
-            </filters>-->
+        </filters>
         <massaction name="listing_massaction">
 			<argument name="data" xsi:type="array">
 				<item name="config" xsi:type="array">
@@ -93,7 +93,6 @@
         <column name="log_id">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="filter" xsi:type="string">textRange</item>
 					<item name="sorting" xsi:type="string">desc</item>
                     <item name="label" xsi:type="string" translate="true">ID</item>                   
                     <item name="sortOrder" xsi:type="number">10</item>
@@ -117,7 +116,16 @@
 					<item name="sortOrder" xsi:type="number">30</item>
                 </item>
             </argument>
-        </column>              
+        </column>
+        <column name="from">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">From</item>
+					<item name="sortOrder" xsi:type="number">40</item>
+                </item>
+            </argument>
+        </column>        
         <column name="created_at" class="Magento\Ui\Component\Listing\Columns\Date">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
@@ -125,7 +133,7 @@
                     <item name="dataType" xsi:type="string">date</item>
                     <item name="label" xsi:type="string" translate="true">Created At</item>
                     <item name="dateFormat" xsi:type="string">MMM dd, YYYY, H:MM:SS A</item>
-                    <item name="sortOrder" xsi:type="number">160</item>
+                    <item name="sortOrder" xsi:type="number">50</item>
                 </item>
             </argument>
         </column>               
@@ -134,11 +142,10 @@
                 <item name="options" xsi:type="object">Faonni\Smtp\Model\Config\Source\Status</item>
                 <item name="config" xsi:type="array">
                     <item name="filter" xsi:type="string">select</item>
-                    <item name="editor" xsi:type="string">select</item>
                     <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/select</item>
                     <item name="dataType" xsi:type="string">select</item>
                     <item name="label" xsi:type="string" translate="true">Status</item>
-                    <item name="sortOrder" xsi:type="number">180</item>
+                    <item name="sortOrder" xsi:type="number">60</item>
                 </item>
             </argument>
         </column>
@@ -148,6 +155,7 @@
                     <item name="indexField" xsi:type="string">log_id</item>
                     <item name="viewUrlPath" xsi:type="string">faonni_smtp/log/view</item>
                     <item name="urlEntityParamName" xsi:type="string">id</item>
+                    <item name="sortOrder" xsi:type="number">70</item>
                 </item>
             </argument>
         </actionsColumn>          
