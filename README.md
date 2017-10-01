@@ -16,9 +16,11 @@ from Magento 2.1.x, 2.2.x
 from Magento 2.1.x, 2.2.x
 
 listing page
+
 <img alt="Magento2 Smtp" src="https://karliuka.github.io/m2/smtp/grid.png" style="width:100%"/>
 
 view page
+
 <img alt="Magento2 Smtp" src="https://karliuka.github.io/m2/smtp/view.png" style="width:100%"/>
 
 ## Install with Composer as you go
