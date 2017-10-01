@@ -7,17 +7,13 @@ from Magento 2.0.*
 
 <img alt="Magento2 Smtp" src="https://karliuka.github.io/m2/smtp/config.png" style="width:100%"/>
 
-from Magento 2.1.*
-
-from Magento 2.2.*
+from Magento 2.1.*, 2.2.*
 
 <img alt="Magento2 Smtp" src="https://karliuka.github.io/m2/smtp/config.2.1.3.png" style="width:100%"/>
 
 ### Log Message
 
-from Magento 2.1.*
-
-from Magento 2.2.*
+from Magento 2.1.*, 2.2.*
 
 listing page
 <img alt="Magento2 Smtp" src="https://karliuka.github.io/m2/smtp/grid.png" style="width:100%"/>
