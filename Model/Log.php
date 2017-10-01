@@ -14,12 +14,12 @@ use Magento\Framework\Model\AbstractModel;
 class Log extends AbstractModel
 {
     /**
-     * Log Status Success Constant
+     * Log Status Success
      */
     const STATUS_SUCCESS = 1;
     
     /**
-     * Log Status Failed Constant
+     * Log Status Failed
      */
     const STATUS_FAILED = 0;
     
@@ -32,9 +32,4 @@ class Log extends AbstractModel
     {
         $this->_init('Faonni\Smtp\Model\ResourceModel\Log');
     }
-    
-   // public function getCustomAttributes()
-   // {
-   //     return [];
-    //}
 }

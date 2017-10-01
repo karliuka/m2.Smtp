@@ -48,12 +48,15 @@ class LogManagement
      *
      * @param MessageInterface $message
      * @param string $error
-     * @return bool
+     * @return void
      */
     public function add(MessageInterface $message, $error)
 	{
-		$log = $this->_collection->getNewEmptyItem();
-		
+        if (!$this->_helper->isLogEnabled()) {
+            return;
+        }
+        
+		$log = $this->_collection->getNewEmptyItem();		
 		$recipients = $message->getRecipients();
 		$recipient = reset($recipients);
 
@@ -65,7 +68,27 @@ class LogManagement
 			'error'           => $error,
 			'status'          => $error ? 0 : 1
 		]);
-
 		$log->save();
 	}
+	
+    /**
+     * Delete Expire Log
+     *
+     * @return void
+     */
+    public function deleteExpire()
+	{
+        if (!$this->_helper->isCleanEnabled()) {
+            return;
+        }
+        
+		$collection = $this->_collection
+            ->addExpireDateFilter(
+                $this->_helper->getDays()
+            );
+		
+		foreach ($collection as $log) {
+			$log->delete();
+		}
+	}	
 }

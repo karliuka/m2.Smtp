@@ -80,7 +80,52 @@
                     <depends>
                         <field id="disable">0</field>
                     </depends>  
+                </field>
+                <field id="log" translate="label" type="select" sortOrder="90" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="1">
+                    <label>Log Sending Email</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="disable">0</field>
+                        <field id="enabled">1</field>
+                    </depends>                       
                 </field>               
+                <field id="clean" translate="label" type="select" sortOrder="100" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="1">
+                    <label>Enable Log Cleaning</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="disable">0</field>
+                        <field id="enabled">1</field>
+                    </depends>                       
+                </field> 
+                <field id="days" translate="label" type="text" sortOrder="110" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="1">
+                    <label>Save Log, Days</label>
+                    <depends>
+                        <field id="disable">0</field>
+                        <field id="enabled">1</field>
+                        <field id="log">1</field>
+                        <field id="clean">1</field>
+                    </depends>                       
+                </field>
+                <field id="time" translate="label" type="time" sortOrder="120" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="1">
+                    <label>Start Time</label>
+                    <depends>
+                        <field id="disable">0</field>
+                        <field id="enabled">1</field>
+                        <field id="log">1</field>
+                        <field id="clean">1</field>
+                    </depends>  
+                </field>                
+                <field id="frequency" translate="label" type="select" sortOrder="130" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Frequency</label>
+                    <source_model>Magento\Cron\Model\Config\Source\Frequency</source_model>
+                    <backend_model>Faonni\Smtp\Model\Config\Backend\Cron</backend_model>
+                    <depends>
+                        <field id="disable">0</field>
+                        <field id="enabled">1</field>
+                        <field id="log">1</field>
+                        <field id="clean">1</field>
+                    </depends>                     
+                </field>                
             </group>
         </section>
     </system>

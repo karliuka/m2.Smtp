@@ -46,4 +46,19 @@ class Collection extends AbstractCollection
 			'Faonni\Smtp\Model\ResourceModel\Log'
 		);
     }
+    
+    /**
+     * Limit collection by expire date
+     *
+     * @param string $interval
+     * @return $this
+     */
+    public function addExpireDateFilter($interval)
+    {
+        $this->getSelect()->where(
+            "created_at <= NOW() - INTERVAL ? DAY",
+            (int)$interval
+        );
+        return $this;
+    }     
 }

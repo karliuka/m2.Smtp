@@ -11,11 +11,14 @@
     <default>
         <system>
             <smtp>
+                <enabled>0</enabled>
                 <port>465</port>
-                <enabled>1</enabled>
                 <ssl>ssl</ssl>
                 <auth>login</auth>
                 <pass backend_model="Magento\Config\Model\Config\Backend\Encrypted" />
+                <log>1</log>
+                <clean>1</clean>
+                <days>30</days>
             </smtp>
         </system>
     </default>
