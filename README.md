@@ -3,17 +3,9 @@ Extension enables you to easily use your own custom SMTP server for sending mail
 
 ### Configuration
 
-from Magento 2.0.x
-
-<img alt="Magento2 Smtp" src="https://karliuka.github.io/m2/smtp/config.png" style="width:100%"/>
-
-from Magento 2.1.x, 2.2.x
-
 <img alt="Magento2 Smtp" src="https://karliuka.github.io/m2/smtp/config.2.1.3.png" style="width:100%"/>
 
 ### Log Message
-
-from Magento 2.1.x, 2.2.x
 
 listing page
 
