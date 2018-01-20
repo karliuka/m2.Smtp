@@ -18,7 +18,7 @@ use Magento\Framework\DB\Ddl\Table;
 class UpgradeSchema implements UpgradeSchemaInterface
 {
     /**
-     * Upgrades DB Schema for a Module Faonni_Smtp
+     * Upgrades DB Schema for a Module
      *
      * @param SchemaSetupInterface $setup
      * @param ModuleContextInterface $context
