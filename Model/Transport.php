@@ -18,7 +18,7 @@ use Faonni\Smtp\Model\LogManagement;
 class Transport extends \Zend_Mail_Transport_Smtp implements TransportInterface
 {
     /**
-     * Object Manager
+     * Message
      *
      * @var \Magento\Framework\Mail\MessageInterface
      */     

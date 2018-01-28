@@ -22,7 +22,9 @@ class Auth implements ArrayInterface
     {
         return [
             ['value' => ''     , 'label' => __('Authentication Not Required')],
-            ['value' => 'login', 'label' => __('Login/Password')],
+            ['value' => 'plain', 'label' => __('Plain')],
+            ['value' => 'login', 'label' => __('Login')],
+            ['value' => 'crammd5', 'label' => __('CRAM-MD5')]
         ];
     }
 }

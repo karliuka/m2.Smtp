@@ -56,7 +56,7 @@
                     <depends>
                         <field id="disable">0</field>
                         <field id="enabled">1</field>
-                        <field id="auth">login</field>
+                        <field id="auth" separator=",">plain,login,crammd5</field>
                     </depends>                      
                 </field>
                 <field id="pass" translate="label" type="obscure" sortOrder="34" showInDefault="1" showInWebsite="1" showInStore="1">
@@ -65,7 +65,7 @@
                     <depends>
                         <field id="disable">0</field>
                         <field id="enabled">1</field>
-                        <field id="auth">login</field>
+                        <field id="auth" separator=",">plain,login,crammd5</field>
                     </depends>                      
                 </field>
                 <field id="validate" translate="button_label" sortOrder="35" showInDefault="1" showInWebsite="1" showInStore="1">

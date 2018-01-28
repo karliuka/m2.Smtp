@@ -17,7 +17,7 @@
                 <auth>login</auth>
                 <pass backend_model="Magento\Config\Model\Config\Backend\Encrypted" />
                 <log>1</log>
-                <clean>1</clean>
+                <clean>0</clean>
                 <days>30</days>
             </smtp>
         </system>
