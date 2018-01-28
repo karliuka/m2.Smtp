@@ -106,7 +106,7 @@
                         <field id="clean">1</field>
                     </depends>                       
                 </field>
-                <field id="time" translate="label" type="time" sortOrder="120" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="1">
+                <field id="time" translate="label" type="time" sortOrder="120" showInDefault="1" showInWebsite="0" showInStore="0">
                     <label>Start Time</label>
                     <depends>
                         <field id="disable">0</field>
@@ -115,7 +115,7 @@
                         <field id="clean">1</field>
                     </depends>  
                 </field>                
-                <field id="frequency" translate="label" type="select" sortOrder="130" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="1">
+                <field id="frequency" translate="label" type="select" sortOrder="130" showInDefault="1" showInWebsite="0" showInStore="0">
                     <label>Frequency</label>
                     <source_model>Magento\Cron\Model\Config\Source\Frequency</source_model>
                     <backend_model>Faonni\Smtp\Model\Config\Backend\Cron</backend_model>
@@ -125,7 +125,16 @@
                         <field id="log">1</field>
                         <field id="clean">1</field>
                     </depends>                     
-                </field>                
+                </field>
+                <field id="last_clean" translate="label" type="label" sortOrder="140" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Last Clean</label>
+                    <depends>
+                        <field id="disable">0</field>
+                        <field id="enabled">1</field>
+                        <field id="log">1</field>
+                        <field id="clean">1</field>
+                    </depends>  
+                </field>				
             </group>
         </section>
     </system>
