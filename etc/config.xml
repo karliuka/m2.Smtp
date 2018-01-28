@@ -19,6 +19,7 @@
                 <log>1</log>
                 <clean>0</clean>
                 <days>30</days>
+				<frequency>D</frequency>
             </smtp>
         </system>
     </default>

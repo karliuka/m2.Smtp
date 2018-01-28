@@ -115,7 +115,7 @@
                         <field id="clean">1</field>
                     </depends>  
                 </field>                
-                <field id="frequency" translate="label" type="select" sortOrder="130" showInDefault="1" showInWebsite="0" showInStore="0">
+                <field id="frequency" translate="label" type="select" sortOrder="130" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="1">
                     <label>Frequency</label>
                     <source_model>Magento\Cron\Model\Config\Source\Frequency</source_model>
                     <backend_model>Faonni\Smtp\Model\Config\Backend\Cron</backend_model>
