@@ -18,7 +18,7 @@ Magento CE 2.1.x, 2.2.x
 2. Enter following commands to install module:
 
     ```bash
-    composer require require faonni/module-smtp
+    composer require faonni/module-smtp
     ```
    Wait while dependencies are updated.
    
