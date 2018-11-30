@@ -1,0 +1,24 @@
+{
+    "faonni_smtp_log": {
+        "column": {
+            "log_id": true,
+            "recipient_email": true,
+            "subject": true,
+            "message_body": true,
+            "from": true,
+            "error": true,
+            "status": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "index": {
+            "FAONNI_SMTP_LOG_SUBJECT_MESSAGE_BODY": true,
+            "FAONNI_SMTP_LOG_STATUS": true,
+            "FAONNI_SMTP_LOG_CREATED_AT": true,
+            "FAONNI_SMTP_LOG_UPDATED_AT": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

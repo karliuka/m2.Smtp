@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Karliuka Vitalii(karliuka.vitalii@gmail.com)
+ * See COPYING.txt for license details.
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="faonni_smtp_log" resource="default" engine="innodb" comment="Faonni Smtp Log">
+        <column xsi:type="int" name="log_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Log Id"/>        
+		<column xsi:type="varchar" name="recipient_email" nullable="false" length="255" comment="Recipient Email"/>
+		<column xsi:type="varchar" name="subject" nullable="false" length="255" comment="Subject"/>
+		<column xsi:type="mediumtext" name="message_body" nullable="false" comment="Message Body"/>
+		<column xsi:type="varchar" name="from" nullable="false" length="255" comment="From"/>
+		<column xsi:type="text" name="error" nullable="true" comment="Error"/>
+		<column xsi:type="smallint" name="status" padding="5" unsigned="true" nullable="false" identity="false" default="0" comment="Status"/>
+		<column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Creation Time"/>
+		<column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP" comment="Update Time"/>
+        <index referenceId="FAONNI_SMTP_LOG_SUBJECT_MESSAGE_BODY" indexType="fulltext">
+            <column name="subject"/>
+            <column name="message_body"/>
+        </index>		
+        <index referenceId="FAONNI_SMTP_LOG_STATUS" indexType="btree">
+            <column name="status"/>
+        </index>
+        <index referenceId="FAONNI_SMTP_LOG_CREATED_AT" indexType="btree">
+            <column name="created_at"/>
+        </index>
+        <index referenceId="FAONNI_SMTP_LOG_UPDATED_AT" indexType="btree">
+            <column name="updated_at"/>
+        </index>		
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="log_id"/>
+        </constraint>
+    </table>
+</schema>
