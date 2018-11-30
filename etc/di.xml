@@ -7,15 +7,11 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 	xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
-	<!--
-	plugin
-	-->		
+	<!-- plugin -->		
     <type name="\Magento\Framework\Mail\TransportInterfaceFactory">
         <plugin name="faonni_smtp" type="Faonni\Smtp\Plugin\Framework\Mail\TransportInterfaceFactory" />
     </type>
-	<!--
-	ui grid
-	-->		
+	<!-- ui grid -->		
 	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
         <arguments>
             <argument name="collections" xsi:type="array">
