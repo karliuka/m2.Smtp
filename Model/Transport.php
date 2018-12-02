@@ -9,12 +9,16 @@ use Magento\Framework\Mail\TransportInterface;
 use Magento\Framework\Mail\MessageInterface;
 use Magento\Framework\Exception\MailException;
 use Magento\Framework\Phrase;
+use Zend\Mail\Message as ZendMessage;
+use Zend\Mail\Transport\Smtp;
+use Zend\Mail\Transport\SmtpOptions;
+use Zend\Mail\Protocol\Smtp as SmtpProtocol;
 use Faonni\Smtp\Model\LogManagement;
 
 /**
  * Smtp Transport
  */
-class Transport extends \Zend_Mail_Transport_Smtp implements TransportInterface
+class Transport implements TransportInterface
 {
     /**
      * Message
@@ -24,14 +28,21 @@ class Transport extends \Zend_Mail_Transport_Smtp implements TransportInterface
     protected $_message;
 	
     /**
-     * Log Management
+     * Log management
      *
      * @var \Faonni\Smtp\Model\LogManagement
      */
     protected $_logManager;	
     
     /**
-	 * Initialize Transport
+     * Smtp transport
+     *
+     * @var \Zend\Mail\Transport\Smtp
+     */
+    private $_smtpTransport;
+    
+    /**
+	 * Initialize transport
 	 *	
      * @param MessageInterface $message
      * @param LogManagement $logManager	 
@@ -41,87 +52,72 @@ class Transport extends \Zend_Mail_Transport_Smtp implements TransportInterface
     public function __construct(
 		MessageInterface $message,
 		LogManagement $logManager,
-		$host = '127.0.0.1', 
-		array $config = []
+		array $config
 	) {
-        if (!$message instanceof \Zend_Mail) {
-            throw new \InvalidArgumentException(
-				'The message should be an instance of \Zend_Mail'
-			);
-        } 
-		
         $this->_message = $message;
 		$this->_logManager = $logManager;
-		
-		parent::__construct(
-			$host, 
-			$config
+		$this->_smtpTransport = new Smtp( 
+			new SmtpOptions($config)
 		);
     }
 
     /**
-     * Send a Mail Using this Transport
+     * Send a mail using smtp transport
      *
      * @return void
      * @throws \Magento\Framework\Exception\MailException
      */
     public function sendMessage()
     {
-		$error = null;
-		try {
-            parent::send($this->_message);
-        } 
-        catch (\Exception $e) {
+        $error = null;
+        $message = ZendMessage::fromString(
+			$this->_message->getRawMessage()
+		);
+		
+        try {
+            $this->_smtpTransport->send($message);
+        } catch (\Exception $e) {
             $error = new Phrase($e->getMessage());
-			throw new MailException($error, $e);
-        } 
+            throw new MailException($error, $e);
+        }
         finally {
-			$this->_logManager->add($this->_message, $error);			
+			$this->_logManager->add($message, $error);			
 		}
     }
     
     /**
-     * Test the Smtp Connection Protocol
+     * Test the smtp connection protocol
      *
      * @return bool
      */
     public function testConnection()
     {
         $result = false;
-        if (!($this->_connection instanceof Zend_Mail_Protocol_Smtp)) {
-            // Check if authentication is required and determine required class
-            $connectionClass = 'Zend_Mail_Protocol_Smtp';
-            if ($this->_auth) {
-                $connectionClass .= '_Auth_' . ucwords($this->_auth);
-            }
-            if (!class_exists($connectionClass)) {
-                #require_once 'Zend/Loader.php';
-                Zend_Loader::loadClass($connectionClass);
-            }
-            $this->setConnection(
-				new $connectionClass(
-					$this->_host, 
-					$this->_port, 
-					$this->_config
-				)
-			);
-            $this->_connection->connect();
-            $this->_connection->helo($this->_name);
-            $result = true;
-        } 
-		// Reset connection transaction
-		$this->_connection->rset();
-		
+        $option = $this->_smtpTransport->getOptions();
+        $connection = $this->_smtpTransport->getConnection();
+        if (!($connection instanceof SmtpProtocol) || !$connection->hasSession()) {
+			$config = $option->getConnectionConfig();
+			$config['host'] = $option->getHost();
+			$config['port'] = $option->getPort();            
+            $connection = $this->_smtpTransport->plugin($option->getConnectionClass(), $config);
+        }
+        
+		$connection->connect();
+		$connection->helo($option->getName());
+		$result = true;        
+		// Reset connection to ensure reliable transaction
+		$connection->rset();
+
 		return $result;
     } 
 	
     /**
-     * Retrieve Message
+     * Retrieve message
      *
      * @return \Magento\Framework\Mail\MessageInterface
      */
     public function getMessage()
 	{
 		return $this->_message;
-	}
+	}	
 }

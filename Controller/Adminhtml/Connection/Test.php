@@ -102,13 +102,15 @@ class Test extends ConnectionAbstract
             }
             
             $data = [
-				'host' => $request->getParam('host'),
 				'config' => [
+					'host' => $request->getParam('host'),
 					'port' => $request->getParam('port'),
-					'auth' => $request->getParam('auth'),
-					'ssl'  => $request->getParam('ssl'),					
-					'username' => $request->getParam('user'),
-					'password' => $password			
+					'connection_class' => $request->getParam('auth'),
+					'connection_config' => [
+						'ssl'  => $request->getParam('ssl'),					
+						'username' => $request->getParam('user'),
+						'password' => $password						
+					]		
 				]
             ];
             

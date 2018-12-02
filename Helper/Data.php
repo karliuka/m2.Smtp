@@ -126,13 +126,15 @@ class Data extends AbstractHelper
      */
     public function getConfig(array $config = [])
     {
-		$config['host'] = $this->_getConfig(self::XML_CONFIG_HOST);
 		$config['config'] = [
+			'host' => $this->_getConfig(self::XML_CONFIG_HOST),
 			'port' => $this->_getConfig(self::XML_CONFIG_PORT),
-			'auth' => $this->_getConfig(self::XML_CONFIG_AUTH),
-			'ssl'  => $this->_getConfig(self::XML_CONFIG_SSL),
-			'username' => $this->_getConfig(self::XML_CONFIG_USER),
-			'password' => $this->_getConfig(self::XML_CONFIG_PASS)
+			'connection_class' => $this->_getConfig(self::XML_CONFIG_AUTH),
+			'connection_config' => [
+				'ssl' => $this->_getConfig(self::XML_CONFIG_SSL),
+				'username' => $this->_getConfig(self::XML_CONFIG_USER),
+				'password' => $this->_getConfig(self::XML_CONFIG_PASS)			
+			]
 		];        
         return $config;
     } 
