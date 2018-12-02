@@ -7,7 +7,7 @@ Extension enables you to easily use your own custom SMTP server for sending mail
 
 ## Compatibility
 
-Magento CE(EE) 2.0.x, 2.1.x, 2.2.x
+Magento CE(EE) 2.0.x, 2.1.x, 2.2.x, 2.3.x
 
 ## Install
 
