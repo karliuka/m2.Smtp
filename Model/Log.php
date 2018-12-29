@@ -6,6 +6,7 @@
 namespace Faonni\Smtp\Model;
 
 use Magento\Framework\Model\AbstractModel;
+use Faonni\Smtp\Model\ResourceModel\Log as LogResource;
 
 /**
  * Log Model
@@ -16,12 +17,12 @@ class Log extends AbstractModel
      * Log Status Success
      */
     const STATUS_SUCCESS = 1;
-    
+
     /**
      * Log Status Failed
      */
     const STATUS_FAILED = 0;
-    
+
     /**
      * Initialize Model
      *
@@ -29,6 +30,6 @@ class Log extends AbstractModel
      */
     protected function _construct()
     {
-        $this->_init('Faonni\Smtp\Model\ResourceModel\Log');
+        $this->_init(LogResource::class);
     }
 }

@@ -13,6 +13,7 @@ use Faonni\Smtp\Model\Config\Source\Status as StatusOption;
 
 /**
  * Log View Block
+ * @api
  */
 class View extends Container
 {
@@ -22,20 +23,20 @@ class View extends Container
      * @var \Magento\Framework\Registry
      */
     protected $_registry; 
-    
+
     /**
      * Status Option
      *
      * @var \Faonni\Smtp\Model\Config\Source\Status
      */
-    protected $_statusOption;     
-    
+    protected $_statusOption;
+
     /**
      * Initialize Block
      *
      * @param Context $context
      * @param Registry $registry 
-     * @param StatusOption $statusOption     
+     * @param StatusOption $statusOption
      * @param array $data
      */
     public function __construct(
@@ -46,13 +47,13 @@ class View extends Container
     ) {
         $this->_registry = $registry;
         $this->_statusOption = $statusOption;
-        
+
         parent::__construct(
-            $context, 
+            $context,
             $data
         );
     }
-    
+
     /**
      * Preparing global layout
      *
@@ -65,7 +66,7 @@ class View extends Container
             'onclick' => "location.href='" . $this->getUrl('*/*/') . "'",
             'class'   => 'back'
         ]);
-        
+
         $this->addButton('delete', [
             'label' => __('Delete'),
             'onclick' => 'deleteConfirm(' . json_encode(__('Are you sure you want to do this?'))
@@ -73,79 +74,79 @@ class View extends Container
                 . json_encode($this->getUrl('*/*/delete', ['id' => $this->getLog()->getId()]))
                 . ')',
             'class' => 'scalable delete'
-        ]); 
-        
+        ]);
+
         return parent::_prepareLayout();
     }
-    
+
     /**
      * Retrieve Log Instance
      *
      * @return \Faonni\Smtp\Model\Log
-     */    
+     */
     public function getLog()
     {
         return $this->_registry->registry('faonni_smtp_log');
     }
-    
+
     /**
      * Retrieve Message Body Url
      *
      * @return string
-     */      
+     */
     public function getMessageBodyUrl()
     {
         return $this->getUrl('*/*/iframe', ['id' => $this->getLog()->getId()]);
     } 
-    
+
     /**
      * Retrieve From
      *
      * @return string
-     */      
+     */
     public function getFrom()
     {
         return $this->getLog()->getFrom();
-    }  
-    
+    }
+
     /**
      * Retrieve Recipient Email
      *
      * @return string
-     */      
+     */
     public function getRecipientEmail()
     {
         return $this->getLog()->getRecipientEmail();
-    }  
-    
+    }
+
     /**
      * Retrieve Subject
      *
      * @return string
-     */      
+     */
     public function getSubject()
     {
         return $this->getLog()->getSubject();
     } 
-    
+
     /**
      * Retrieve Creation Time
      *
      * @return string
-     */      
+     */
     public function getCreatedAt()
     {
         return $this->formatDate(
             $this->getLog()->getCreatedAt(),
             \IntlDateFormatter::FULL
         );
-    } 
-    
+    }
+
     /**
      * Retrieve Status
      *
      * @return string
-     */      
+     */
     public function getStatus()
     {
         $options = $this->_statusOption->toOptionArray();
@@ -155,15 +156,15 @@ class View extends Container
             }
         }
         return __('Unknown');
-    } 
-    
+    }
+
     /**
      * Retrieve Error Message
      *
      * @return string
-     */      
+     */
     public function getError()
     {
         return $this->getLog()->getError() ?: __('None');
-    }       
+    }
 }

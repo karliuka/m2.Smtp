@@ -6,19 +6,19 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
-	<!-- plugin -->		
+    xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- plugin -->
     <type name="\Magento\Framework\Mail\TransportInterfaceFactory">
         <plugin name="faonni_smtp" type="Faonni\Smtp\Plugin\Framework\Mail\TransportInterfaceFactory" />
     </type>
-	<!-- ui grid -->		
-	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+    <!-- ui grid -->
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
         <arguments>
             <argument name="collections" xsi:type="array">
                 <item name="faonni_smtp_log_grid_data_source" xsi:type="string">Faonni\Smtp\Model\ResourceModel\Log\Grid\Collection</item>
             </argument>
         </arguments>
-	</type> 
+    </type>
     <type name="Faonni\Smtp\Model\ResourceModel\Log\Grid\Collection">
         <arguments>
             <argument name="mainTable" xsi:type="string">faonni_smtp_log</argument>
@@ -26,5 +26,5 @@
             <argument name="eventObject" xsi:type="string">collection</argument>
             <argument name="resourceModel" xsi:type="string">Faonni\Smtp\Model\ResourceModel\Log</argument>
         </arguments>
-    </type> 
+    </type>
 </config>

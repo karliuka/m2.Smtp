@@ -6,9 +6,9 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+    xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
     <!-- adminhtml smtp router config -->
-	<router id="admin">
+    <router id="admin">
         <route id="faonni_smtp" frontName="faonni_smtp">
             <module name="Faonni_Smtp" />
         </route>
