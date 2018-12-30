@@ -9,7 +9,6 @@
     xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
     <module name="Faonni_Smtp" setup_version="2.1.6">
         <sequence>
-            <module name="Magento_Backend"/>
             <module name="Magento_Email"/>
         </sequence>
     </module>	

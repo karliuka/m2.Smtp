@@ -9,62 +9,62 @@ use Magento\Store\Model\ScopeInterface;
 use Magento\Framework\App\Helper\AbstractHelper;
 
 /**
- * Faonni Smtp Data Helper
+ * Smtp helper
  */
 class Data extends AbstractHelper
 {
     /**
-     * Enabled Config Path
+     * Enabled config path
      */
     const XML_CONFIG_ENABLED = 'system/smtp/enabled';
 
     /**
-     * Host Config Path
+     * Host config path
      */
     const XML_CONFIG_HOST = 'system/smtp/host';
 
     /**
-     * Port Config Path
+     * Port config path
      */
     const XML_CONFIG_PORT = 'system/smtp/port';
 
     /**
-     * Auth Config Path
+     * Auth config path
      */
     const XML_CONFIG_AUTH = 'system/smtp/auth';
  
     /**
-     * Ssl Config Path
+     * Ssl config path
      */
     const XML_CONFIG_SSL = 'system/smtp/ssl';
 
     /**
-     * Username Config Path
+     * Username config path
      */
     const XML_CONFIG_USER = 'system/smtp/user';
 
     /**
-     * Password Config Path
+     * Password config path
      */
     const XML_CONFIG_PASS = 'system/smtp/pass';
 
     /**
-     * Log Enabled Config Path
+     * Log enabled config path
      */
     const XML_CONFIG_LOG = 'system/smtp/log';
 
     /**
-     * Enabled Log Cleaning Config Path
+     * Enabled log cleaning config path
      */
     const XML_CONFIG_CLEAN = 'system/smtp/clean';
 
     /**
-     * Days Config Path
+     * Days config path
      */
     const XML_CONFIG_DAYS = 'system/smtp/days';
 
     /**
-     * Check Smtp Transport Functionality Should be Enabled
+     * Check smtp transport functionality should be enabled
      *
      * @param string $store
      * @return bool
@@ -75,7 +75,7 @@ class Data extends AbstractHelper
     }
 
     /**
-     * Check Log Functionality Should be Enabled
+     * Check log functionality should be enabled
      *
      * @param string $store
      * @return bool
@@ -86,7 +86,7 @@ class Data extends AbstractHelper
     }
 
     /**
-     * Check Clean Functionality Should be Enabled
+     * Check clean functionality should be enabled
      *
      * @param string $store
      * @return bool
@@ -97,7 +97,7 @@ class Data extends AbstractHelper
     }
 
     /**
-     * Retrieve Password
+     * Retrieve password
      *
      * @param string $store
      * @return string
@@ -108,7 +108,7 @@ class Data extends AbstractHelper
     }
 
     /**
-     * Retrieve Days
+     * Retrieve days
      *
      * @param string $store
      * @return string
@@ -119,7 +119,7 @@ class Data extends AbstractHelper
     }
 
     /**
-     * Retrieve Configure Smtp Settings
+     * Retrieve configure smtp settings
      *
      * @param array $config
      * @return array
@@ -138,7 +138,7 @@ class Data extends AbstractHelper
     }
 
     /**
-     * Retrieve Store Configuration Data
+     * Retrieve store configuration data
      *
      * @param string $path
      * @param int|Store $store

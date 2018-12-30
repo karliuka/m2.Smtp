@@ -10,21 +10,22 @@ use Faonni\Smtp\Model\ResourceModel\Log as LogResource;
 
 /**
  * Log Model
+ * @api
  */
 class Log extends AbstractModel
 {
     /**
-     * Log Status Success
+     * Log status success
      */
     const STATUS_SUCCESS = 1;
 
     /**
-     * Log Status Failed
+     * Log status failed
      */
     const STATUS_FAILED = 0;
 
     /**
-     * Initialize Model
+     * Initialize model
      *
      * @return void
      */

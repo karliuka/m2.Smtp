@@ -12,7 +12,7 @@ use Magento\Framework\Phrase;
 use Faonni\Smtp\Model\LogManagement;
 
 /**
- * Smtp Transport
+ * Smtp transport
  */
 class Transport extends \Zend_Mail_Transport_Smtp implements TransportInterface
 {
@@ -24,14 +24,14 @@ class Transport extends \Zend_Mail_Transport_Smtp implements TransportInterface
     protected $_message;
 
     /**
-     * Log Management
+     * Log management
      *
      * @var \Faonni\Smtp\Model\LogManagement
      */
     protected $_logManager;
 
     /**
-     * Initialize Transport
+     * Initialize transport
      *
      * @param MessageInterface $message
      * @param LogManagement $logManager
@@ -60,7 +60,7 @@ class Transport extends \Zend_Mail_Transport_Smtp implements TransportInterface
     }
 
     /**
-     * Send a Mail Using this Transport
+     * Send a mail using this transport
      *
      * @return void
      * @throws \Magento\Framework\Exception\MailException
@@ -79,7 +79,7 @@ class Transport extends \Zend_Mail_Transport_Smtp implements TransportInterface
     }
 
     /**
-     * Test the Smtp Connection Protocol
+     * Test the smtp connection protocol
      *
      * @return bool
      */
@@ -114,7 +114,7 @@ class Transport extends \Zend_Mail_Transport_Smtp implements TransportInterface
     }
 
     /**
-     * Retrieve Message
+     * Retrieve message
      *
      * @return \Magento\Framework\Mail\MessageInterface
      */

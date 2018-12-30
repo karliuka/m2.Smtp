@@ -7,7 +7,7 @@
 <script>
 require(['prototype'], function(){
 //<![CDATA[
-    function <?= $block->getJsFunction() ?>() {
+    function <?= $block->escapeHtml($block->getJsFunction()) ?>() {
         var summaryId = $('<?= $block->getHtmlResultId() ?>');
         var tooltipId = $('<?= $block->getHtmlResultId() ?>-tooltip');
         var messageId = $('<?= $block->getHtmlResultId() ?>-message');
@@ -19,7 +19,7 @@ require(['prototype'], function(){
             'pass': $('system_smtp_pass').value,
             'ssl' : $('system_smtp_ssl').value
         };
-        new Ajax.Request('<?= /* @escapeNotVerified */ $block->getAjaxUrl() ?>', {
+        new Ajax.Request('<?= $block->escapeHtml($block->getAjaxUrl()) ?>', {
             parameters: params,
             onSuccess: function(response) {
                 var message = null;
@@ -33,31 +33,31 @@ require(['prototype'], function(){
                         summaryId.removeClassName('error')
                             .removeClassName('hidden')
                             .addClassName('success')
-                            .update('<?= /* @escapeNotVerified */ __('Connection Successful') ?>');
+                            .update('<?= $block->escapeHtml(__('Connection Successful')) ?>');
                     } else {
                         tooltipId.removeClassName('hidden');
                         messageId.update(message);
                         summaryId.removeClassName('success')
                             .removeClassName('hidden')
                             .addClassName('error')
-                            .update('<?= /* @escapeNotVerified */ __('Connection Failed') ?>');
+                            .update('<?= $block->escapeHtml(__('Connection Failed')) ?>');
                     }
                 } catch (e) {
                     tooltipId.addClassName('hidden');
                     summaryId.removeClassName('success')
                         .removeClassName('hidden')
                         .addClassName('error')
-                        .update('<?= /* @escapeNotVerified */ __('Error during smtp connection test.') ?>');
+                        .update('<?= $block->escapeHtml(__('Error during smtp connection test.')) ?>');
                 }
             }
         });
     }
-    window.<?= $block->getJsFunction() ?> = <?= $block->getJsFunction() ?>;
+    window.<?= $block->escapeHtml($block->getJsFunction()) ?> = <?= $block->escapeHtml($block->getJsFunction()) ?>;
 //]]>
 });
 </script>
 <div class="actions actions-smtp-test">
-    <button onclick="javascript:<?= $block->getJsFunction() ?>(); return false;"
+    <button onclick="javascript:<?= $block->escapeHtml($block->getJsFunction()) ?>(); return false;"
             type="button"
             id="<?= $block->getHtmlId() ?>">
         <span><?= $block->escapeHtml($block->getButtonLabel()) ?></span>

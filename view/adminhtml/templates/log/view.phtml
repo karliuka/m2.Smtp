@@ -8,26 +8,26 @@
     <div class="admin__page-section-content">
         <div class="admin__page-section-item order-information">
             <div class="admin__page-section-item-title">
-                <span class="title"><?= __('Message Information') ?></span>
+                <span class="title"><?= $block->escapeHtml(__('Message Information')) ?></span>
             </div>
             <div class="admin__page-section-item-content">
                 <table class="admin__table-secondary order-information-table">
                     <tbody>
                         <tr>
-                            <th><?= __('Recipient Email') ?></th>
+                            <th><?= $block->escapeHtml(__('Recipient Email')) ?></th>
                             <td>
-                                <a href="mailto:<?= $this->getRecipientEmail() ?>">
-                                    <?= $this->getRecipientEmail() ?>
+                                <a href="mailto:<?= $block->escapeHtml($block->getRecipientEmail()) ?>">
+                                    <?= $block->escapeHtml($block->getRecipientEmail()) ?>
                                 </a>
                             </td>
                         </tr>
                         <tr>
-                            <th><?= __('From') ?></th>
-                            <td><?= $this->getFrom() ?></td>
+                            <th><?= $block->escapeHtml(__('From')) ?></th>
+                            <td><?= $block->escapeHtml($block->getFrom()) ?></td>
                         </tr>
                         <tr>
-                            <th><?= __('Subject') ?></th>
-                            <td><?= $this->getSubject() ?></td>
+                            <th><?= $block->escapeHtml(__('Subject')) ?></th>
+                            <td><?= $block->escapeHtml($block->getSubject()) ?></td>
                         </tr>
                     </tbody>
                 </table>
@@ -35,22 +35,22 @@
         </div>
         <div class="admin__page-section-item order-account-information">
             <div class="admin__page-section-item-title">
-                <span class="title"><?= __('Sending Information') ?></span>
+                <span class="title"><?= $block->escapeHtml(__('Sending Information')) ?></span>
             </div>
             <div class="admin__page-section-item-content">
                 <table class="admin__table-secondary order-account-information-table">
                     <tbody> 
                         <tr>
-                            <th><?= __('Sending Time') ?></th>
-                            <td><?= $this->getCreatedAt() ?></td>
+                            <th><?= $block->escapeHtml(__('Sending Time')) ?></th>
+                            <td><?= $block->escapeHtml($block->getCreatedAt()) ?></td>
                         </tr>
                         <tr>
-                            <th><?= __('Status') ?></th>
-                            <td><?= $this->getStatus() ?></td>
+                            <th><?= $block->escapeHtml(__('Status')) ?></th>
+                            <td><?= $block->escapeHtml($block->getStatus()) ?></td>
                         </tr>
                         <tr>
-                            <th><?= __('Error Message') ?></th>
-                            <td><?= $this->getError() ?></td>
+                            <th><?= $block->escapeHtml(__('Error Message')) ?></th>
+                            <td><?= $block->escapeHtml($block->getError()) ?></td>
                         </tr>
                     </tbody>
                 </table>
@@ -60,7 +60,7 @@
 </section>
 <section class="admin__page-section order-view-account-information">
     <iframe id="message-boby" 
-            src="<?= $this->getMessageBodyUrl() ?>" 
+            src="<?= $block->escapeHtml($block->getMessageBodyUrl()) ?>" 
             width="100%" 
             frameborder="0" 
             scrolling="no"></iframe>
