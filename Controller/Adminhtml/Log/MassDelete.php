@@ -8,42 +8,42 @@ namespace Faonni\Smtp\Controller\Adminhtml\Log;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Backend\App\Action\Context;
 use Magento\Ui\Component\MassAction\Filter;
-use Faonni\Smtp\Model\ResourceModel\Log\CollectionFactory;
-use Faonni\Smtp\Controller\Adminhtml\Log as LogAbstract;
+use Faonni\Smtp\Model\ResourceModel\Log\Collection;
+use Faonni\Smtp\Controller\Adminhtml\Log as Action;
 
 /**
- * MassDelete Log Controller
+ * Mass delete controller
  */
-class MassDelete extends LogAbstract
+class MassDelete extends Action
 {
     /**
-     * MassAction Filter
+     * Mass action filter
      *
      * @var \Magento\Ui\Component\MassAction\Filter
      */
     protected $_filter;
 
     /**
-     * Log Collection Factory
+     * Log collection
      *
-     * @var \Faonni\Smtp\Model\ResourceModel\Log\CollectionFactory
+     * @var \Faonni\Smtp\Model\ResourceModel\Log\Collection
      */
-    protected $_collectionFactory;
+    protected $_collection;
 
     /**
-     * Initialize Controller
+     * Initialize controller
      *
      * @param Context $context
      * @param Filter $filter
-     * @param CollectionFactory $collectionFactory
+     * @param Collection $collection
      */
     public function __construct(
         Context $context,
         Filter $filter,
-        CollectionFactory $collectionFactory
+        Collection $collection
     ) {
         $this->_filter = $filter;
-        $this->_collectionFactory = $collectionFactory;
+        $this->_collection = $collection;
 
         parent::__construct(
             $context
@@ -51,14 +51,14 @@ class MassDelete extends LogAbstract
     }
 
     /**
-     * MassDelete Action
+     * Mass delete action
      *
      * @return \Magento\Backend\Model\View\Result\Redirect
      */
     public function execute()
     {
         $collection = $this->_filter->getCollection(
-            $this->_collectionFactory->create()
+            $this->_collection
         );
 
         $size = $collection->getSize();

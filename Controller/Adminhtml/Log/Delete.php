@@ -5,25 +5,25 @@
  */
 namespace Faonni\Smtp\Controller\Adminhtml\Log;
 
-use Magento\Framework\App\Action\Context;
 use Magento\Framework\Controller\Result\ForwardFactory;
-use Faonni\Smtp\Controller\Adminhtml\Log as LogAbstract;
+use Magento\Backend\App\Action\Context;
+use Faonni\Smtp\Controller\Adminhtml\Log as Action;
 use Faonni\Smtp\Model\Log;
 
 /**
- * Delete Log Controller
+ * Delete controller
  */
-class Delete extends LogAbstract
+class Delete extends Action
 {
     /**
-     * Result Forward Factory
+     * Result forward factory
      *
      * @var \Magento\Framework\Controller\Result\ForwardFactory
      */
     protected $_resultForwardFactory;
 
     /**
-     * Initialize Controller
+     * Initialize controller
      *
      * @param Context $context
      * @param ForwardFactory $resultForwardFactory
@@ -40,7 +40,7 @@ class Delete extends LogAbstract
     }
 
     /**
-     * Delete Action
+     * Delete action
      *
      * @return \Magento\Backend\Model\View\Result\Redirect
      */

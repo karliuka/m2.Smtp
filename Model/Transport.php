@@ -41,8 +41,8 @@ class Transport extends \Zend_Mail_Transport_Smtp implements TransportInterface
     public function __construct(
         MessageInterface $message,
         LogManagement $logManager,
-        $host = '127.0.0.1',
-        array $config = []
+        array $config = [],
+        $host = '127.0.0.1'
     ) {
         if (!$message instanceof \Zend_Mail) {
             throw new \InvalidArgumentException(

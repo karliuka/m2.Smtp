@@ -5,41 +5,41 @@
  */
 namespace Faonni\Smtp\Controller\Adminhtml\Log;
 
-use Magento\Framework\App\Action\Context;
 use Magento\Framework\Controller\Result\ForwardFactory;
 use Magento\Framework\View\Result\PageFactory;
 use Magento\Framework\Registry;
-use Faonni\Smtp\Controller\Adminhtml\Log as LogAbstract;
+use Magento\Backend\App\Action\Context;
+use Faonni\Smtp\Controller\Adminhtml\Log as Action;
 use Faonni\Smtp\Model\Log;
 
 /**
- * View Log Controller
+ * View controller
  */
-class View extends LogAbstract
+class View extends Action
 {
     /**
-     * Result Forward Factory
+     * Result forward factory
      *
      * @var \Magento\Framework\Controller\Result\ForwardFactory
      */
     protected $_resultForwardFactory;
 
     /**
-     * Result Page Factory
+     * Result page factory
      *
      * @var \Magento\Framework\View\Result\PageFactory
      */
     protected $_resultPageFactory;
 
     /**
-     * Registry
+     * Core registry
      *
      * @var Magento\Framework\Registry
      */
     protected $_registry;
 
     /**
-     * Initialize Controller
+     * Initialize controller
      *
      * @param Context $context
      * @param ForwardFactory $resultForwardFactory
@@ -62,7 +62,7 @@ class View extends LogAbstract
     }
 
     /**
-     * View Action
+     * View action
      *
      * @return \Magento\Framework\Controller\ResultInterface
      */

@@ -7,10 +7,10 @@ namespace Faonni\Smtp\Model;
 
 use Magento\Framework\Mail\MessageInterface;
 use Faonni\Smtp\Helper\Data as SmtpHelper;
-use Faonni\Smtp\Model\ResourceModel\Log\CollectionFactory;
+use Faonni\Smtp\Model\ResourceModel\Log\Collection;
 
 /**
- * Log Management
+ * Log management
  */
 class LogManagement
 {
@@ -22,28 +22,28 @@ class LogManagement
     protected $_helper;
 
     /**
-     * Log Collection
+     * Log collection
      *
      * @var \Faonni\Smtp\Model\ResourceModel\Log\Collection
      */
     protected $_collection;
 
     /**
-     * Initialize Management
+     * Initialize management
      *
      * @param SmtpHelper $helper
-     * @param CollectionFactory $collectionFactory
+     * @param Collection $collection
      */
     public function __construct(
         SmtpHelper $helper,
-        CollectionFactory $collectionFactory
+        Collection $collection
     ) {
         $this->_helper = $helper;
-        $this->_collection = $collectionFactory->create();
+        $this->_collection = $collection;
     }
 
     /**
-     * Add Log Record
+     * Add log record
      *
      * @param MessageInterface $message
      * @param string $error
@@ -60,18 +60,18 @@ class LogManagement
         $recipient = reset($recipients);
 
         $log->setData([
-            'subject'         => $message->getSubject(),
-            'message_body'    => $message->getBody()->getRawContent(),
-            'from'            => $message->getFrom(),
+            'subject' => $message->getSubject(),
+            'message_body' => $message->getBody()->getRawContent(),
+            'from' => $message->getFrom(),
             'recipient_email' => $recipient,
-            'error'           => $error,
-            'status'          => $error ? 0 : 1
+            'error' => $error,
+            'status' => $error ? 0 : 1
         ]);
         $log->save();
     }
 
     /**
-     * Delete Expire Log
+     * Delete expire log
      *
      * @return void
      */

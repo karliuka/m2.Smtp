@@ -7,22 +7,22 @@ namespace Faonni\Smtp\Controller\Adminhtml\Log;
 
 use Magento\Framework\View\Result\PageFactory;
 use Magento\Backend\App\Action\Context;
-use Faonni\Smtp\Controller\Adminhtml\Log as LogAbstract;
+use Faonni\Smtp\Controller\Adminhtml\Log as Action;
 
 /**
- * Index Log Controller
+ * Index controller
  */
-class Index extends LogAbstract
+class Index extends Action
 {
     /**
-     * Result Page Factory
+     * Result page factory
      *
      * @var \Magento\Framework\View\Result\PageFactory
      */
     protected $_resultPageFactory;
 
     /**
-     * Initialize Controller
+     * Initialize controller
      *
      * @param Context $context
      * @param PageFactory $resultPageFactory
@@ -39,7 +39,7 @@ class Index extends LogAbstract
     }
 
     /**
-     * Index Action
+     * Index action
      *
      * @return \Magento\Framework\Controller\ResultInterface
      */

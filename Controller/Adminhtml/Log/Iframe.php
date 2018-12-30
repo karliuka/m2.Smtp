@@ -5,41 +5,41 @@
  */
 namespace Faonni\Smtp\Controller\Adminhtml\Log;
 
-use Magento\Framework\App\Action\Context;
 use Magento\Framework\Controller\Result\ForwardFactory;
 use Magento\Framework\Controller\Result\RawFactory;
 use Magento\Framework\Registry;
-use Faonni\Smtp\Controller\Adminhtml\Log as LogAbstract;
+use Magento\Backend\App\Action\Context;
+use Faonni\Smtp\Controller\Adminhtml\Log as Action;
 use Faonni\Smtp\Model\Log;
 
 /**
- * Iframe Log Controller
+ * Iframe controller
  */
-class Iframe extends LogAbstract
+class Iframe extends Action
 {
     /**
-     * Result Forward Factory
+     * Result forward factory
      *
      * @var \Magento\Framework\Controller\Result\ForwardFactory
      */
     protected $_resultForwardFactory;
 
     /**
-     * Result Raw Factory
+     * Result raw factory
      *
      * @var \Magento\Framework\Controller\Result\RawFactory
      */
     protected $_resultFactory;
 
     /**
-     * Registry
+     * Core registry
      *
      * @var Magento\Framework\Registry
      */
     protected $_registry;
 
     /**
-     * Initialize Controller
+     * Initialize controller
      *
      * @param Context $context
      * @param ForwardFactory $resultForwardFactory
@@ -62,7 +62,7 @@ class Iframe extends LogAbstract
     }
 
     /**
-     * View Action
+     * View action
      *
      * @return \Magento\Framework\Controller\ResultInterface
      */
