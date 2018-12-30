@@ -32,22 +32,22 @@ class MassDelete extends LogAbstract
 
     /**
      * Initialize Controller
-     * 
+     *
      * @param Context $context
      * @param Filter $filter
      * @param CollectionFactory $collectionFactory
      */
     public function __construct(
-		Context $context, 
-		Filter $filter, 
-		CollectionFactory $collectionFactory
-	) {
+        Context $context,
+        Filter $filter,
+        CollectionFactory $collectionFactory
+    ) {
         $this->_filter = $filter;
         $this->_collectionFactory = $collectionFactory;
-        
+
         parent::__construct(
-			$context
-		);
+            $context
+        );
     }
 
     /**
@@ -58,19 +58,20 @@ class MassDelete extends LogAbstract
     public function execute()
     {
         $collection = $this->_filter->getCollection(
-			$this->_collectionFactory->create()
-		);
-		
-		$size = $collection->getSize();		
+            $this->_collectionFactory->create()
+        );
+
+        $size = $collection->getSize();
         foreach ($collection as $item) {
             $item->delete();
         }
 
-        $this->messageManager->addSuccess(__('A total of %1 record(s) have been deleted.', $size));
-
+        $this->messageManager->addSuccess(
+            __('A total of %1 record(s) have been deleted.', $size)
+        );
         /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
         $resultRedirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);
-        
+
         return $resultRedirect->setPath('*/*/');
     }
 }

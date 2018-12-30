@@ -22,7 +22,7 @@ class View extends Container
      *
      * @var \Magento\Framework\Registry
      */
-    protected $_registry; 
+    protected $_registry;
 
     /**
      * Status Option
@@ -35,7 +35,7 @@ class View extends Container
      * Initialize Block
      *
      * @param Context $context
-     * @param Registry $registry 
+     * @param Registry $registry
      * @param StatusOption $statusOption
      * @param array $data
      */
@@ -97,7 +97,7 @@ class View extends Container
     public function getMessageBodyUrl()
     {
         return $this->getUrl('*/*/iframe', ['id' => $this->getLog()->getId()]);
-    } 
+    }
 
     /**
      * Retrieve From
@@ -127,7 +127,7 @@ class View extends Container
     public function getSubject()
     {
         return $this->getLog()->getSubject();
-    } 
+    }
 
     /**
      * Retrieve Creation Time

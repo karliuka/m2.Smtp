@@ -8,45 +8,49 @@
     <div class="admin__page-section-content">
         <div class="admin__page-section-item order-information">
             <div class="admin__page-section-item-title">
-                <span class="title"><?php echo __('Message Information') ?></span>
+                <span class="title"><?= __('Message Information') ?></span>
             </div>
             <div class="admin__page-section-item-content">
                 <table class="admin__table-secondary order-information-table">
                     <tbody>
                         <tr>
-                            <th><?php echo __('Recipient Email') ?></th>
-                            <td><a href="mailto:<?php echo $this->getRecipientEmail() ?>"><?php echo $this->getRecipientEmail() ?></a></td>
+                            <th><?= __('Recipient Email') ?></th>
+                            <td>
+                                <a href="mailto:<?= $this->getRecipientEmail() ?>">
+                                    <?= $this->getRecipientEmail() ?>
+                                </a>
+                            </td>
                         </tr>
                         <tr>
-                            <th><?php echo __('From') ?></th>
-                            <td><?php echo $this->getFrom() ?></td>
-                        </tr>                        
+                            <th><?= __('From') ?></th>
+                            <td><?= $this->getFrom() ?></td>
+                        </tr>
                         <tr>
-                            <th><?php echo __('Subject') ?></th>
-                            <td><?php echo $this->getSubject() ?></td>
-                        </tr>                         
+                            <th><?= __('Subject') ?></th>
+                            <td><?= $this->getSubject() ?></td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
         </div>
         <div class="admin__page-section-item order-account-information">
             <div class="admin__page-section-item-title">
-                <span class="title"><?php echo __('Sending Information') ?></span>
+                <span class="title"><?= __('Sending Information') ?></span>
             </div>
             <div class="admin__page-section-item-content">
                 <table class="admin__table-secondary order-account-information-table">
                     <tbody> 
                         <tr>
-                            <th><?php echo __('Sending Time') ?></th>
-                            <td><?php echo $this->getCreatedAt() ?></td>
-                        </tr>                     
-                        <tr>
-                            <th><?php echo __('Status') ?></th>
-                            <td><?php echo $this->getStatus() ?></td>
+                            <th><?= __('Sending Time') ?></th>
+                            <td><?= $this->getCreatedAt() ?></td>
                         </tr>
                         <tr>
-                            <th><?php echo __('Error Message') ?></th>
-                            <td><?php echo $this->getError() ?></td>
+                            <th><?= __('Status') ?></th>
+                            <td><?= $this->getStatus() ?></td>
+                        </tr>
+                        <tr>
+                            <th><?= __('Error Message') ?></th>
+                            <td><?= $this->getError() ?></td>
                         </tr>
                     </tbody>
                 </table>
@@ -55,7 +59,11 @@
     </div>
 </section>
 <section class="admin__page-section order-view-account-information">
-    <iframe id="message-boby" src="<?php echo $this->getMessageBodyUrl() ?>" width="100%" frameborder="0" scrolling="no"></iframe>
+    <iframe id="message-boby" 
+            src="<?= $this->getMessageBodyUrl() ?>" 
+            width="100%" 
+            frameborder="0" 
+            scrolling="no"></iframe>
 </section>
 <script>
 require([], function(){
@@ -63,7 +71,7 @@ require([], function(){
     var iframe = document.getElementById('message-boby');
     iframe.onload = function() {
         iframe.height = iframe.contentWindow.document.body.scrollHeight
-    };     
+    };
 //]]>
 });
 </script>

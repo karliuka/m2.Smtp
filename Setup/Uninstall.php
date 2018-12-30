@@ -26,15 +26,14 @@ class Uninstall implements UninstallInterface
         $installer = $setup;
         $installer->startSetup();
         $connection = $installer->getConnection();
-		
+
         /**
          * Remove table 'faonni_smtp_log'
-         */		
+         */
         $tableName = 'faonni_smtp_log';
-        if ($installer->tableExists($tableName)) {			
+        if ($installer->tableExists($tableName)) {
             $connection->dropTable($installer->getTable($tableName));
-		}	                                           
+        }
         $installer->endSetup();
     }
 }
- 

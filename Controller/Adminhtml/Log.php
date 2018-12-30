@@ -16,4 +16,4 @@ abstract class Log extends Action
      * Authorization Level of a Basic Admin Session
      */
     const ADMIN_RESOURCE = 'Faonni_Smtp::log';
-} 
+}

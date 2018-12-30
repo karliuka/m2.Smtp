@@ -10,6 +10,7 @@ use Magento\Framework\Controller\Result\ForwardFactory;
 use Magento\Framework\Controller\Result\RawFactory;
 use Magento\Framework\Registry;
 use Faonni\Smtp\Controller\Adminhtml\Log as LogAbstract;
+use Faonni\Smtp\Model\Log;
 
 /**
  * Iframe Log Controller
@@ -22,28 +23,28 @@ class Iframe extends LogAbstract
      * @var \Magento\Framework\Controller\Result\ForwardFactory
      */
     protected $_resultForwardFactory;
-    
+
     /**
      * Result Raw Factory
      *
      * @var \Magento\Framework\Controller\Result\RawFactory
      */
-    protected $_resultFactory;    
-    
+    protected $_resultFactory;
+
     /**
      * Registry
      *
      * @var Magento\Framework\Registry
      */
-    protected $_registry;    
+    protected $_registry;
 
     /**
      * Initialize Controller
      *
      * @param Context $context
      * @param ForwardFactory $resultForwardFactory
-     * @param RawFactory $resultPageFactory    
-     * @param Registry $registry     
+     * @param RawFactory $resultPageFactory
+     * @param Registry $registry
      */
     public function __construct(
         Context $context,
@@ -52,12 +53,12 @@ class Iframe extends LogAbstract
         Registry $registry
     ) {
         $this->_resultForwardFactory = $resultForwardFactory;
-        $this->_resultFactory = $resultFactory;        
+        $this->_resultFactory = $resultFactory;
         $this->_registry = $registry;
-        
+
         parent::__construct(
-			$context
-		);
+            $context
+        );
     }
 
     /**
@@ -68,17 +69,17 @@ class Iframe extends LogAbstract
     public function execute()
     {
         $id = (int)$this->getRequest()->getParam('id', false);
-        $log = $this->_objectManager->get('Faonni\Smtp\Model\Log')
-            ->load($id);          
-        
+        $log = $this->_objectManager->get(Log::class)
+            ->load($id);
+
         if (!$log->getId()) {
             $resultForward = $this->_resultForwardFactory->create();
             return $resultForward->forward('noroute');
         }
-        
+
         $resultRaw = $this->_resultFactory
-			->create();
-			
+            ->create();
+
         return $resultRaw->setContents($log->getMessageBody());
     }
 }

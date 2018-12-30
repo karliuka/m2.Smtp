@@ -25,22 +25,22 @@ class Cron extends ConfigValue
      * Cron String Constant
      */
     const CRON_STRING_PATH = 'crontab/default/jobs/faonni_smtp_clean_log/schedule/cron_expr';
-    
+
     /**
      * Cron Model Constant
      */
     const CRON_MODEL_PATH = 'crontab/default/jobs/faonni_smtp_clean_log/run/model';
-    
+
     /**
      * Enabled Log Cleaning Config Path
      */
     const XML_PATH_CLEAN_ENABLED = 'groups/smtp/fields/clean/value';
-    
+
     /**
      * Start Time Config Path
      */
     const XML_PATH_CLEAN_TIME = 'groups/smtp/fields/time/value';
-    
+
     /**
      * Frequency Config Path
      */
@@ -50,19 +50,19 @@ class Cron extends ConfigValue
      * Config Value Factory
      *
      * @var \Magento\Framework\App\Config\ValueFactory
-     */    
+     */
     protected $_configValueFactory;
 
     /**
      * Run Model Path
      *
      * @var string
-     */ 
+     */
     protected $_runModelPath = '';
 
     /**
-	 * Initialize Model
-	 *
+     * Initialize Model
+     *
      * @param Context $context
      * @param Registry $registry
      * @param ScopeConfigInterface $config
@@ -86,14 +86,14 @@ class Cron extends ConfigValue
     ) {
         $this->_runModelPath = $runModelPath;
         $this->_configValueFactory = $configValueFactory;
-        
+
         parent::__construct(
-            $context, 
-            $registry, 
-            $config, 
-            $cacheTypeList, 
-            $resource, 
-            $resourceCollection, 
+            $context,
+            $registry,
+            $config,
+            $cacheTypeList,
+            $resource,
+            $resourceCollection,
             $data
         );
     }
@@ -144,8 +144,7 @@ class Cron extends ConfigValue
             )->setPath(
                 self::CRON_MODEL_PATH
             )->save();
-        } 
-        catch (\Exception $e) {
+        } catch (\Exception $e) {
             throw new LocalizedException(
                 __('We can\'t save the Cron expression.')
             );

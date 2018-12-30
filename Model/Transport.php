@@ -20,43 +20,43 @@ class Transport extends \Zend_Mail_Transport_Smtp implements TransportInterface
      * Message
      *
      * @var \Magento\Framework\Mail\MessageInterface
-     */     
+     */
     protected $_message;
-	
+
     /**
      * Log Management
      *
      * @var \Faonni\Smtp\Model\LogManagement
      */
-    protected $_logManager;	
-    
+    protected $_logManager;
+
     /**
-	 * Initialize Transport
-	 *	
+     * Initialize Transport
+     *
      * @param MessageInterface $message
-     * @param LogManagement $logManager	 
+     * @param LogManagement $logManager
      * @param array $config
      * @throws \InvalidArgumentException
      */
     public function __construct(
-		MessageInterface $message,
-		LogManagement $logManager,
-		$host = '127.0.0.1', 
-		array $config = []
-	) {
+        MessageInterface $message,
+        LogManagement $logManager,
+        $host = '127.0.0.1',
+        array $config = []
+    ) {
         if (!$message instanceof \Zend_Mail) {
             throw new \InvalidArgumentException(
-				'The message should be an instance of \Zend_Mail'
-			);
-        } 
-		
+                'The message should be an instance of \Zend_Mail'
+            );
+        }
+
         $this->_message = $message;
-		$this->_logManager = $logManager;
-		
-		parent::__construct(
-			$host, 
-			$config
-		);
+        $this->_logManager = $logManager;
+
+        parent::__construct(
+            $host,
+            $config
+        );
     }
 
     /**
@@ -67,19 +67,17 @@ class Transport extends \Zend_Mail_Transport_Smtp implements TransportInterface
      */
     public function sendMessage()
     {
-		$error = null;
-		try {
+        $error = null;
+        try {
             parent::send($this->_message);
-        } 
-        catch (\Exception $e) {
+        } catch (\Exception $e) {
             $error = new Phrase($e->getMessage());
-			throw new MailException($error, $e);
-        } 
-        finally {
-			$this->_logManager->add($this->_message, $error);			
-		}
+            throw new MailException($error, $e);
+        } finally {
+            $this->_logManager->add($this->_message, $error);
+        }
     }
-    
+
     /**
      * Test the Smtp Connection Protocol
      *
@@ -99,29 +97,29 @@ class Transport extends \Zend_Mail_Transport_Smtp implements TransportInterface
                 Zend_Loader::loadClass($connectionClass);
             }
             $this->setConnection(
-				new $connectionClass(
-					$this->_host, 
-					$this->_port, 
-					$this->_config
-				)
-			);
+                new $connectionClass(
+                    $this->_host,
+                    $this->_port,
+                    $this->_config
+                )
+            );
             $this->_connection->connect();
             $this->_connection->helo($this->_name);
             $result = true;
-        } 
-		// Reset connection transaction
-		$this->_connection->rset();
-		
-		return $result;
-    } 
-	
+        }
+        // Reset connection transaction
+        $this->_connection->rset();
+
+        return $result;
+    }
+
     /**
      * Retrieve Message
      *
      * @return \Magento\Framework\Mail\MessageInterface
      */
     public function getMessage()
-	{
-		return $this->_message;
-	}
+    {
+        return $this->_message;
+    }
 }

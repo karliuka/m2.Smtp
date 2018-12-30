@@ -7,19 +7,19 @@
 <script>
 require(['prototype'], function(){
 //<![CDATA[
-    function <?php echo $block->getJsFunction() ?>() {
-        var summaryId = $('<?php echo $block->getHtmlResultId() ?>');
-		var tooltipId = $('<?php echo $block->getHtmlResultId() ?>-tooltip');
-		var messageId = $('<?php echo $block->getHtmlResultId() ?>-message');
+    function <?= $block->getJsFunction() ?>() {
+        var summaryId = $('<?= $block->getHtmlResultId() ?>');
+        var tooltipId = $('<?= $block->getHtmlResultId() ?>-tooltip');
+        var messageId = $('<?= $block->getHtmlResultId() ?>-message');
         var params = {
-			'host': $('system_smtp_host').value,
-			'port': $('system_smtp_port').value,
-			'auth': $('system_smtp_auth').value,
-			'user': $('system_smtp_user').value,
-			'pass': $('system_smtp_pass').value,
-			'ssl' : $('system_smtp_ssl').value
+            'host': $('system_smtp_host').value,
+            'port': $('system_smtp_port').value,
+            'auth': $('system_smtp_auth').value,
+            'user': $('system_smtp_user').value,
+            'pass': $('system_smtp_pass').value,
+            'ssl' : $('system_smtp_ssl').value
         };
-        new Ajax.Request('<?php /* @escapeNotVerified */ echo $block->getAjaxUrl() ?>', {
+        new Ajax.Request('<?= /* @escapeNotVerified */ $block->getAjaxUrl() ?>', {
             parameters: params,
             onSuccess: function(response) {
                 var message = null;
@@ -29,40 +29,42 @@ require(['prototype'], function(){
                         message = response.message || message;
                     }
                     if (response.valid == 1) {
-                        tooltipId.addClassName('hidden');	
-						summaryId.removeClassName('error')
-							.removeClassName('hidden')
-							.addClassName('success')
-							.update('<?php /* @escapeNotVerified */ echo __('Connection Successful') ?>');
+                        tooltipId.addClassName('hidden');
+                        summaryId.removeClassName('error')
+                            .removeClassName('hidden')
+                            .addClassName('success')
+                            .update('<?= /* @escapeNotVerified */ __('Connection Successful') ?>');
                     } else {
                         tooltipId.removeClassName('hidden');
-						messageId.update(message);
-						summaryId.removeClassName('success')
-							.removeClassName('hidden')
-							.addClassName('error')
-							.update('<?php /* @escapeNotVerified */ echo __('Connection Failed') ?>');
+                        messageId.update(message);
+                        summaryId.removeClassName('success')
+                            .removeClassName('hidden')
+                            .addClassName('error')
+                            .update('<?= /* @escapeNotVerified */ __('Connection Failed') ?>');
                     }
                 } catch (e) {
                     tooltipId.addClassName('hidden');
-					summaryId.removeClassName('success')
-						.removeClassName('hidden')
-						.addClassName('error')
-						.update('<?php /* @escapeNotVerified */ echo __('Error during smtp connection test.') ?>');
+                    summaryId.removeClassName('success')
+                        .removeClassName('hidden')
+                        .addClassName('error')
+                        .update('<?= /* @escapeNotVerified */ __('Error during smtp connection test.') ?>');
                 }
             }
         });
     }
-    window.<?php echo $block->getJsFunction() ?> = <?php echo $block->getJsFunction() ?>;
+    window.<?= $block->getJsFunction() ?> = <?= $block->getJsFunction() ?>;
 //]]>
 });
 </script>
 <div class="actions actions-smtp-test">
-    <button onclick="javascript:<?php echo $block->getJsFunction() ?>(); return false;" type="button" id="<?php echo $block->getHtmlId() ?>">
-        <span><?php echo $block->escapeHtml($block->getButtonLabel()) ?></span>
+    <button onclick="javascript:<?= $block->getJsFunction() ?>(); return false;"
+            type="button"
+            id="<?= $block->getHtmlId() ?>">
+        <span><?= $block->escapeHtml($block->getButtonLabel()) ?></span>
     </button>
-    <div id="<?php echo $block->getHtmlResultId() ?>" class="summary hidden"></div>
-	<div id="<?php echo $block->getHtmlResultId() ?>-tooltip" class="admin__field-tooltip hidden">
-		<span class="admin__field-tooltip-action action-help" tabindex="1"></span>
-		<div id="<?php echo $block->getHtmlResultId() ?>-message" class="admin__field-tooltip-content"></div>
-	</div>	
+    <div id="<?= $block->getHtmlResultId() ?>" class="summary hidden"></div>
+    <div id="<?= $block->getHtmlResultId() ?>-tooltip" class="admin__field-tooltip hidden">
+        <span class="admin__field-tooltip-action action-help" tabindex="1"></span>
+        <div id="<?= $block->getHtmlResultId() ?>-message" class="admin__field-tooltip-content"></div>
+    </div>
 </div>

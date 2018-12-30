@@ -12,4 +12,4 @@ use Magento\Backend\App\Action;
  */
 abstract class Connection extends Action
 {
-} 
+}

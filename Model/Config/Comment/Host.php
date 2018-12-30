@@ -14,11 +14,11 @@ class Host implements CommentInterface
 {
     /**
      * Retrieve Element Comment by Element Value
-     * 
+     *
      * @param string $elementValue
      * @return string
-     */	
-	public function getCommentText($elementValue)
+     */
+    public function getCommentText($elementValue)
     {
         return __('Either Hostname or IP address.');
     }

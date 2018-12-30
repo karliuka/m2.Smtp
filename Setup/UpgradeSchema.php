@@ -36,111 +36,109 @@ class UpgradeSchema implements UpgradeSchemaInterface
 
     /**
      * Add Log Table
-	 *
+     *
      * @param SchemaSetupInterface $setup
      * @return void
      */
     private function addLogTable(SchemaSetupInterface $setup)
     {
-		$installer = $setup;
+        $installer = $setup;
         $connection = $installer->getConnection();
-		
+
         /**
          * Create table 'faonni_smtp_log'
-         */		
+         */
         $tableName = 'faonni_smtp_log';
         if (!$installer->tableExists($tableName)) {
-            $table = $connection->newTable(
-					$installer->getTable($tableName)
-				)
-				->addColumn(
+            $table = $connection->newTable($installer->getTable($tableName))
+                ->addColumn(
                     'log_id',
                     Table::TYPE_INTEGER,
                     null,
                     ['unsigned' => true, 'identity' => true, 'nullable' => false, 'primary' => true],
                     'Log Id'
                 )
-				->addColumn(
+                ->addColumn(
                     'recipient_email',
                     Table::TYPE_TEXT,
                     255,
                     ['nullable' => false],
                     'Recipient Email'
-                )	                
-				->addColumn(
+                )
+                ->addColumn(
                     'subject',
                     Table::TYPE_TEXT,
                     255,
                     ['nullable' => false],
                     'Subject'
-                )				
-				->addColumn(
+                )
+                ->addColumn(
                     'message_body',
                     Table::TYPE_TEXT,
                     '1024k',
                     ['nullable' => false],
                     'Message Body'
                 )
-				->addColumn(
+                ->addColumn(
                     'from',
                     Table::TYPE_TEXT,
                     255,
                     ['nullable' => false],
                     'From'
-                )                 
-				->addColumn(
+                )
+                ->addColumn(
                     'error',
                     Table::TYPE_TEXT,
                     '64k',
                     [],
                     'Error'
-                )				
-				->addColumn(
-					'status',
-					Table::TYPE_SMALLINT,
-					null,
-					['unsigned' => true, 'nullable' => false, 'default' => '0'],
-					'Status'
-				)	               
-				->addColumn(
-					'created_at',
-					Table::TYPE_TIMESTAMP,
-					null,
-					['nullable' => false, 'default' => Table::TIMESTAMP_INIT],
-					'Creation Time'
-				)			
-				->addColumn(
-					'updated_at',
-					Table::TYPE_TIMESTAMP,
-					null,
-					['nullable' => false, 'default' => Table::TIMESTAMP_INIT_UPDATE],
-					'Update Time'
-				)				
-				->addIndex(
-					$installer->getIdxName($tableName, ['status']),
-					['status']
-				)									
-				->addIndex(
-					$installer->getIdxName($tableName, ['created_at']),
-					['created_at']
-				)
-				->addIndex(
-					$installer->getIdxName($tableName, ['updated_at']),
-					['updated_at']
-				)	
-				->addIndex(
-					$installer->getIdxName(
-						$tableName,
-						['subject', 'message_body'],
-						AdapterInterface::INDEX_TYPE_FULLTEXT
-					),
-					['subject', 'message_body'],
-					['type' => AdapterInterface::INDEX_TYPE_FULLTEXT]
-				)				
-				->setComment(
+                )
+                ->addColumn(
+                    'status',
+                    Table::TYPE_SMALLINT,
+                    null,
+                    ['unsigned' => true, 'nullable' => false, 'default' => '0'],
+                    'Status'
+                )
+                ->addColumn(
+                    'created_at',
+                    Table::TYPE_TIMESTAMP,
+                    null,
+                    ['nullable' => false, 'default' => Table::TIMESTAMP_INIT],
+                    'Creation Time'
+                )
+                ->addColumn(
+                    'updated_at',
+                    Table::TYPE_TIMESTAMP,
+                    null,
+                    ['nullable' => false, 'default' => Table::TIMESTAMP_INIT_UPDATE],
+                    'Update Time'
+                )
+                ->addIndex(
+                    $installer->getIdxName($tableName, ['status']),
+                    ['status']
+                )
+                ->addIndex(
+                    $installer->getIdxName($tableName, ['created_at']),
+                    ['created_at']
+                )
+                ->addIndex(
+                    $installer->getIdxName($tableName, ['updated_at']),
+                    ['updated_at']
+                )
+                ->addIndex(
+                    $installer->getIdxName(
+                        $tableName,
+                        ['subject', 'message_body'],
+                        AdapterInterface::INDEX_TYPE_FULLTEXT
+                    ),
+                    ['subject', 'message_body'],
+                    ['type' => AdapterInterface::INDEX_TYPE_FULLTEXT]
+                )
+                ->setComment(
                     'Faonni Smtp Log Table'
-                );				
-            $connection->createTable($table);		
-		}
+                );
+            $connection->createTable($table);
+        }
     }
 }

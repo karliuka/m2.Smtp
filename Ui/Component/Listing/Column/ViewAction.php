@@ -17,14 +17,14 @@ class ViewAction extends Column
 {
     /**
      * Url Builder
-     * 
+     *
      * @var \Magento\Framework\UrlInterface
      */
     protected $_urlBuilder;
 
     /**
      * Initialize Column
-     * 
+     *
      * @param ContextInterface $context
      * @param UiComponentFactory $uiComponentFactory
      * @param UrlInterface $urlBuilder
@@ -39,13 +39,13 @@ class ViewAction extends Column
         array $data = []
     ) {
         $this->_urlBuilder = $urlBuilder;
-        
+
         parent::__construct(
-			$context, 
-			$uiComponentFactory, 
-			$components, 
-			$data
-		);
+            $context,
+            $uiComponentFactory,
+            $components,
+            $data
+        );
     }
 
     /**

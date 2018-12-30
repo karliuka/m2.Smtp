@@ -3,10 +3,11 @@
  * Copyright © Karliuka Vitalii(karliuka.vitalii@gmail.com)
  * See COPYING.txt for license details.
  */
-namespace Faonni\Smtp\Plugin\Framework\Mail; 
+namespace Faonni\Smtp\Plugin\Framework\Mail;
 
 use Magento\Framework\ObjectManagerInterface;
 use Faonni\Smtp\Helper\Data as SmtpHelper;
+use Faonni\Smtp\Model\Transport;
 
 /**
  * TransportInterface Plugin
@@ -26,45 +27,45 @@ class TransportInterfaceFactory
      * @var string
      */
     protected $_instanceName;
-    
+
     /**
      * Helper
      *
      * @var \Faonni\Smtp\Helper\Data
      */
     protected $_helper;
-    
+
     /**
-	 * Initialize Factory
-	 *	
-     * @param SmtpHelper $helper 
+     * Initialize Factory
+     *
+     * @param SmtpHelper $helper
      * @param ObjectManagerInterface $objectManager
      * @param string $instanceName
      */
     public function __construct(
         SmtpHelper $helper,
         ObjectManagerInterface $objectManager,
-        $instanceName = 'Faonni\Smtp\Model\Transport'
+        $instanceName = Transport::class
     ) {
         $this->_helper = $helper;
         $this->_objectManager = $objectManager;
         $this->_instanceName = $instanceName;
     }
-    	
+
     /**
      * Create Class instance with Specified Parameters
      *
      * @param $subject TransportInterfaceFactory
-     * @param $proceed \Callable	
+     * @param $proceed \Callable
      * @param array $data
      * @return \Magento\Framework\Mail\TransportInterface
-     */	
-    public function aroundCreate($subject, $proceed, array $data = []) 
+     */
+    public function aroundCreate($subject, $proceed, array $data = [])
     {
         if ($this->_helper->isEnabled()) {
             return $this->_objectManager
-				->create($this->_instanceName, $this->_helper->getConfig($data));
+                ->create($this->_instanceName, $this->_helper->getConfig($data));
         }
-		return $proceed($data);
-    }	
+        return $proceed($data);
+    }
 }

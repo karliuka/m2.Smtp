@@ -12,7 +12,6 @@ use Magento\Framework\App\RequestInterface;
 use Magento\Framework\View\Element\UiComponent\DataProvider\Reporting;
 use Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider as AbstractDataProvider;
 
-
 /**
  * Data Provider
  */
@@ -20,7 +19,7 @@ class DataProvider extends AbstractDataProvider
 {
     /**
      * Initialize Provider
-     * 
+     *
      * @param string $name
      * @param string $primaryFieldName
      * @param string $requestFieldName
@@ -72,5 +71,5 @@ class DataProvider extends AbstractDataProvider
         $arrItems['totalRecords'] = $searchResult->getTotalCount();
 
         return $arrItems;
-    }    
+    }
 }

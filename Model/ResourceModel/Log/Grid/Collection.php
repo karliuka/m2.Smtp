@@ -13,6 +13,7 @@ use Magento\Framework\Data\Collection\Db\FetchStrategyInterface;
 use Magento\Framework\Event\ManagerInterface;
 use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 use Magento\Framework\DB\Adapter\AdapterInterface;
+use Magento\Framework\View\Element\UiComponent\DataProvider\Document;
 use Psr\Log\LoggerInterface;
 use Faonni\Smtp\Model\ResourceModel\Log\Collection as LogCollection;
 
@@ -30,16 +31,16 @@ class Collection extends LogCollection implements SearchResultInterface
 
     /**
      * Initialize Grid Collection
-     * 
+     *
      * @param EntityFactoryInterface $entityFactory
      * @param LoggerInterface $logger
      * @param FetchStrategyInterface $fetchStrategy
      * @param ManagerInterface $eventManager
-     * @param string $mainTable     
+     * @param string $mainTable
      * @param string $eventPrefix
      * @param string $eventObject
-     * @param string $resourceModel     
-     * @param string $model 
+     * @param string $resourceModel
+     * @param string $model
      * @param AdapterInterface $connection
      * @param AbstractDb $resource
      */
@@ -52,7 +53,7 @@ class Collection extends LogCollection implements SearchResultInterface
         $eventPrefix,
         $eventObject,
         $resourceModel,
-        $model = 'Magento\Framework\View\Element\UiComponent\DataProvider\Document',
+        $model = Document::class,
         AdapterInterface $connection = null,
         AbstractDb $resource = null
     ) {
@@ -60,7 +61,7 @@ class Collection extends LogCollection implements SearchResultInterface
         $this->_eventObject = $eventObject;
         $this->_init($model, $resourceModel);
         $this->setMainTable($mainTable);
-        
+
         parent::__construct(
             $entityFactory,
             $logger,
@@ -68,12 +69,12 @@ class Collection extends LogCollection implements SearchResultInterface
             $eventManager,
             $connection,
             $resource
-        );        
+        );
     }
 
     /**
      * Get aggregation
-     * 
+     *
      * @return AggregationInterface
      */
     public function getAggregations()
@@ -83,7 +84,7 @@ class Collection extends LogCollection implements SearchResultInterface
 
     /**
      * Set aggregation
-     * 
+     *
      * @param AggregationInterface $aggregations
      * @return $this
      */

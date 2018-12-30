@@ -14,11 +14,11 @@ class Port implements CommentInterface
 {
     /**
      * Retrieve Element Comment by Element Value
-     * 
+     *
      * @param string $elementValue
      * @return string
-     */	
-	public function getCommentText($elementValue)
+     */
+    public function getCommentText($elementValue)
     {
         return __('Usually is 25, 587 or 465. Please consult with your service provider.');
     }

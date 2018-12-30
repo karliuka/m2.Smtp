@@ -21,8 +21,8 @@ class Status implements ArrayInterface
     public function toOptionArray()
     {
         return [
-			['value' => Log::STATUS_FAILED , 'label' => __('Failed')],
-			['value' => Log::STATUS_SUCCESS, 'label' => __('Success')]
-		];
+            ['value' => Log::STATUS_FAILED , 'label' => __('Failed')],
+            ['value' => Log::STATUS_SUCCESS, 'label' => __('Success')]
+        ];
     }
 }

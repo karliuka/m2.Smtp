@@ -6,6 +6,8 @@
 namespace Faonni\Smtp\Model\ResourceModel\Log;
 
 use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
+use Faonni\Smtp\Model\ResourceModel\Log as LogResource;
+use Faonni\Smtp\Model\Log;
 
 /**
  * Log ResourceModel Collection
@@ -25,14 +27,14 @@ class Collection extends AbstractCollection
      * @var string
      */
     protected $_eventObject = 'collection';
-    
+
     /**
      * Identifier field name for collection items
      *
      * @var string
      */
-    protected $_idFieldName = 'log_id';      
-	
+    protected $_idFieldName = 'log_id';
+
     /**
      * Initialize Collection
      *
@@ -40,12 +42,9 @@ class Collection extends AbstractCollection
      */
     protected function _construct()
     {
-        $this->_init(
-			'Faonni\Smtp\Model\Log', 
-			'Faonni\Smtp\Model\ResourceModel\Log'
-		);
+        $this->_init(Log::class, LogResource::class);
     }
-    
+
     /**
      * Limit collection by expire date
      *
@@ -59,5 +58,5 @@ class Collection extends AbstractCollection
             (int)$interval
         );
         return $this;
-    }     
+    }
 }

@@ -8,6 +8,7 @@ namespace Faonni\Smtp\Controller\Adminhtml\Log;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\Controller\Result\ForwardFactory;
 use Faonni\Smtp\Controller\Adminhtml\Log as LogAbstract;
+use Faonni\Smtp\Model\Log;
 
 /**
  * Delete Log Controller
@@ -19,25 +20,25 @@ class Delete extends LogAbstract
      *
      * @var \Magento\Framework\Controller\Result\ForwardFactory
      */
-    protected $_resultForwardFactory;  
+    protected $_resultForwardFactory;
 
     /**
      * Initialize Controller
      *
      * @param Context $context
-     * @param ForwardFactory $resultForwardFactory 
+     * @param ForwardFactory $resultForwardFactory
      */
     public function __construct(
         Context $context,
         ForwardFactory $resultForwardFactory
     ) {
         $this->_resultForwardFactory = $resultForwardFactory;
-        
+
         parent::__construct(
-			$context
-		);
+            $context
+        );
     }
-    
+
     /**
      * Delete Action
      *
@@ -45,23 +46,22 @@ class Delete extends LogAbstract
      */
     public function execute()
     {
-        $id = (int)$this->getRequest()->getParam('id', false);
-        $log = $this->_objectManager->get('Faonni\Smtp\Model\Log')
-            ->load($id);          
-        
+        $id = (int)$this->getRequest()->getParam('id');
+        $log = $this->_objectManager->get(Log::class)
+            ->load($id);
+
         if (!$log->getId()) {
             $resultForward = $this->_resultForwardFactory->create();
             return $resultForward->forward('noroute');
-        } 
-        
+        }
+
         /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
         $resultRedirect = $this->resultRedirectFactory->create();
         try {
             $log->delete();
             $this->messageManager->addSuccess(__('The log message has been deleted.'));
             return $resultRedirect->setPath('*/*/');
-        } 
-        catch (\Exception $e) {
+        } catch (\Exception $e) {
             $this->messageManager->addError($e->getMessage());
             return $resultRedirect->setPath('*/*/view', ['id' => $id]);
         }
